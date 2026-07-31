@@ -1,0 +1,73 @@
+<!-- ============================================================
+    DESIGN YOUR DREAM GIFT
+    ============================================================ -->
+<section class="section-dream-gift">
+    <div class="dream-grid container">
+        <!-- Left Copy -->
+        <div class="dream-copy">
+            <div class="overline">✦ Design Your Dream Gift</div>
+            <h2>Create My Gift</h2>
+            <p>
+                Tell us your vision — we'll handcraft a one-of-a-kind
+                gift that tells your story. From concept to delivery,
+                we make it magical.
+            </p>
+            <div class="dream-stats">
+                <div class="stat">
+                    <span class="number">1,200+</span>
+                    <span class="sub">Happy Clients</span>
+                </div>
+                <div class="stat">
+                    <span class="number">98%</span>
+                    <span class="sub">Satisfaction Rate</span>
+                </div>
+                <div class="stat">
+                    <span class="number">4.9 ★</span>
+                    <span class="sub">Average Rating</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Form -->
+        <div class="dream-form-wrap">
+            <h3>Tell us about your gift</h3>
+            <p class="form-sub">Fill in the details and we'll bring it to life.</p>
+
+            <form class="dream-form" onsubmit="event.preventDefault(); alert('Thank you! Our team will contact you within 30 minutes.');">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="e.g. Sarah Johnson" required />
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="sarah@example.com" required />
+                </div>
+                <div class="form-group full-width">
+                    <label>Gift Occasion</label>
+                    <select>
+                        <option>Birthday</option>
+                        <option>Anniversary</option>
+                        <option>Wedding</option>
+                        <option>Surprise</option>
+                        <option>Corporate</option>
+                        <option>Just Because</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group full-width">
+                    <label>Delivery Date</label>
+                    <input type="date" />
+                </div>
+                <div class="form-group full-width">
+                    <label>Upload Inspiration / Reference</label>
+                    <div class="file-upload-wrap">
+                        <input type="text" placeholder="No file chosen" readonly />
+                        <button type="button" class="upload-btn">Upload</button>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit">✨ Submit Your Dream Gift</button>
+                <div class="form-micro">Our team will contact you within 30 minutes to discuss every detail.</div>
+            </form>
+        </div>
+    </div>
+</section>

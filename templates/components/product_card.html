@@ -1,0 +1,19 @@
+<div class="product-card">
+    <div class="image-wrap">
+        <img src="{{ product.image }}" alt="{{ product.title }}" />
+        {% if product.bestseller %}
+        <span class="badge-bestseller">Bestseller</span>
+        {% endif %}
+        <span class="wishlist-icon">♡</span>
+        <button class="quick-view">Quick View</button>
+    </div>
+    <div class="info">
+        <div class="title">{{ product.title }}</div>
+        <div class="price">
+            {% if product.old_price %}
+            <span class="old">${{ product.old_price }}</span>
+            {% endif %}
+            ${{ product.price }}
+        </div>
+    </div>
+</div>

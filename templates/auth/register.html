@@ -1,0 +1,44 @@
+{% extends 'shared/base.html' %}
+
+{% block title %}Register — GiftAura{% endblock %}
+
+{% block content %}
+<section class="auth-section">
+    <div class="auth-container">
+        <div class="auth-card">
+            <h1>Create Account</h1>
+            <p class="auth-sub">Join GiftAura and start creating beautiful memories.</p>
+
+            <form method="POST" action="/register" class="auth-form">
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Sarah Johnson" required />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Min. 8 characters" required />
+                </div>
+                <div class="form-group">
+                    <label for="confirm">Confirm Password</label>
+                    <input type="password" id="confirm" name="confirm" placeholder="Confirm your password" required />
+                </div>
+                <div class="form-options">
+                    <label class="terms">
+                        <input type="checkbox" name="terms" required /> I agree to the
+                        <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                </div>
+                <button type="submit" class="btn-primary auth-btn">Create Account</button>
+            </form>
+
+            <p class="auth-switch">
+                Already have an account? <a href="/login">Sign in</a>
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

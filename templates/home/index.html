@@ -1,0 +1,29 @@
+{% extends 'shared/base.html' %}
+
+{% block title %}GiftAura — Every Gift Becomes A Beautiful Memory{% endblock %}
+
+{% block content %}
+    <!-- ===== HERO ===== -->
+    {% include 'components/hero.html' %}
+
+    <!-- ===== BEST SELLERS ===== -->
+    {% include 'components/best_sellers_section.html' %}
+
+    <!-- ===== SHOP BY CATEGORY ===== -->
+    {% include 'components/category_section.html' %}
+
+    <!-- ===== SHOP BY OCCASION ===== -->
+    {% include 'components/occasion_section.html' %}
+
+    <!-- ===== DESIGN YOUR DREAM GIFT ===== -->
+    {% include 'components/dream_gift_form.html' %}
+
+    <!-- ===== WHY CHOOSE GIFTAURA? ===== -->
+    {% include 'components/why_choose.html' %}
+
+    <!-- ===== HAPPY MEMORIES (TESTIMONIALS) ===== -->
+    {% include 'components/testimonials_section.html' %}
+
+    <!-- ===== FAQ ===== -->
+    {% include 'components/faq.html' %}
+{% endblock %}

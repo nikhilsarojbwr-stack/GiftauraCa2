@@ -1,0 +1,20 @@
+{% extends 'shared/base.html' %}
+
+{% block title %}Shop — GiftAura{% endblock %}
+
+{% block content %}
+<section class="shop-page">
+    <div class="section-header">
+        <div class="title-group">
+            <h2>All Products</h2>
+            <span class="decor-line"></span>
+        </div>
+    </div>
+    <div class="product-grid">
+        {% for product in products %}
+            {% include 'components/product_card.html' %}
+        {% endfor %}
+    </div>
+    {% include 'components/pagination.html' %}
+</section>
+{% endblock %}

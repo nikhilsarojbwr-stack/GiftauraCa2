@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}GiftAura — Every Gift Becomes A Beautiful Memory{% endblock %}</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet" />
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <!-- or use a relative path: /static/css/style.css -->
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    {% include 'shared/navbar.html' %}
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    {% include 'shared/footer.html' %}
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        // Mobile nav toggle (can be moved to a separate JS file)
+        function toggleMobileNav() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('mobile-open');
+        }
+        document.querySelectorAll('#navLinks a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('mobile-open');
+            });
+        });
+    </script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>
