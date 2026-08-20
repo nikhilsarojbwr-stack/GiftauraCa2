@@ -63,3 +63,4 @@ Gift
 - Folders: 10
 - Files: 36
 - Python files: 26
+(.venv) PS D:\Gift> https://github.com/nikhilsarojbwr-stack/GiftauraCa2
