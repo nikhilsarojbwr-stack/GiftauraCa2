@@ -1,0 +1,532 @@
+{% extends 'shared/base.html' %}
+
+{% block title %}Edit Product — GiftAura+{% endblock %}
+
+{% block content %}
+
+<style>
+
+    /* =====================================================
+       EDIT PRODUCT PAGE
+       ===================================================== */
+
+    .admin-form-page {
+        min-height: calc(100vh - 120px);
+        padding: 40px 5%;
+        background: #FBF9F4;
+    }
+
+    .admin-form-container {
+        max-width: 850px;
+        margin: 0 auto;
+    }
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
+
+    .admin-form-header {
+        margin-bottom: 25px;
+    }
+
+    .admin-form-header h1 {
+        margin: 0;
+        color: #11231A;
+        font-size: 32px;
+    }
+
+    .admin-form-header p {
+        margin-top: 8px;
+        color: #777;
+    }
+
+    .back-link {
+        display: inline-block;
+        margin-bottom: 15px;
+        color: #80652D;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .back-link:hover {
+        text-decoration: underline;
+    }
+
+    /* =====================================================
+       FORM CARD
+       ===================================================== */
+
+    .product-form-card {
+        background: white;
+        padding: 35px;
+        border-radius: 14px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
+    }
+
+    /* =====================================================
+       FORM GROUP
+       ===================================================== */
+
+    .form-group {
+        margin-bottom: 22px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #11231A;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .required {
+        color: #A33A3A;
+    }
+
+    .form-control {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 12px 14px;
+        border: 1px solid #D8D4CC;
+        border-radius: 8px;
+        background: #fff;
+        color: #333;
+        font-size: 14px;
+        outline: none;
+        transition: border-color 0.2s ease;
+    }
+
+    .form-control:focus {
+        border-color: #C19B54;
+    }
+
+    textarea.form-control {
+        min-height: 130px;
+        resize: vertical;
+    }
+
+    /* =====================================================
+       CURRENT IMAGE
+       ===================================================== */
+
+    .current-image-section {
+        margin-bottom: 20px;
+    }
+
+    .current-image-label {
+        display: block;
+        margin-bottom: 10px;
+        color: #11231A;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .current-product-image {
+        width: 130px;
+        height: 130px;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        display: block;
+    }
+
+    .no-current-image {
+        width: 130px;
+        height: 130px;
+        border-radius: 10px;
+        background: #F1EEE7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        font-size: 12px;
+    }
+
+    /* =====================================================
+       IMAGE UPLOAD
+       ===================================================== */
+
+    input[type="file"].form-control {
+        padding: 10px;
+    }
+
+    .image-upload-info {
+        margin-top: 7px;
+        color: #888;
+        font-size: 12px;
+    }
+
+    /* =====================================================
+       PRICE
+       ===================================================== */
+
+    .price-input-wrapper {
+        position: relative;
+    }
+
+    .price-symbol {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #777;
+        font-weight: 600;
+    }
+
+    .price-input {
+        padding-left: 35px;
+    }
+
+    /* =====================================================
+       CATEGORY
+       ===================================================== */
+
+    select.form-control {
+        cursor: pointer;
+    }
+
+    /* =====================================================
+       ERROR
+       ===================================================== */
+
+    .form-error {
+        margin-bottom: 22px;
+        padding: 12px 15px;
+        border-radius: 8px;
+        background: #F9E8E8;
+        color: #A33A3A;
+        font-size: 14px;
+    }
+
+    /* =====================================================
+       BUTTONS
+       ===================================================== */
+
+    .form-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+        margin-top: 30px;
+    }
+
+    .cancel-btn,
+    .submit-btn {
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
+        font-size: 14px;
+    }
+
+    .cancel-btn {
+        background: #F0EEE9;
+        color: #555;
+    }
+
+    .cancel-btn:hover {
+        background: #E5E2DA;
+    }
+
+    .submit-btn {
+        background: #C19B54;
+        color: white;
+    }
+
+    .submit-btn:hover {
+        background: #A8813C;
+    }
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
+    @media (max-width: 600px) {
+
+        .admin-form-page {
+            padding: 25px 15px;
+        }
+
+        .product-form-card {
+            padding: 22px;
+        }
+
+        .admin-form-header h1 {
+            font-size: 27px;
+        }
+
+        .form-actions {
+            flex-direction: column;
+        }
+
+        .cancel-btn,
+        .submit-btn {
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+    }
+
+</style>
+
+
+<section class="admin-form-page">
+
+    <div class="admin-form-container">
+
+        <a
+            href="/admin/products"
+            class="back-link"
+        >
+            ← Back to Products
+        </a>
+
+
+        <div class="admin-form-header">
+
+            <h1>Edit Product</h1>
+
+            <p>
+                Update the details of this GiftAura+ product.
+            </p>
+
+        </div>
+
+
+        <div class="product-form-card">
+
+            {% if message %}
+
+            <div class="form-error">
+                {{ message }}
+            </div>
+
+            {% endif %}
+
+
+            <!-- =================================================
+                 EDIT FORM
+                 ================================================= -->
+
+            <form
+                method="POST"
+                action="/admin/products/edit/{{ product._id }}"
+                enctype="multipart/form-data"
+            >
+
+                <!-- PRODUCT NAME -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Product Name
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        class="form-control"
+                        value="{{ product.name }}"
+                        required
+                        maxlength="150"
+                    >
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="form-group">
+
+                    <label for="description">
+                        Product Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        class="form-control"
+                        maxlength="2000"
+                    >{{ product.description }}</textarea>
+
+                </div>
+
+
+                <!-- CURRENT IMAGE -->
+
+                <div class="current-image-section">
+
+                    <span class="current-image-label">
+                        Current Image
+                    </span>
+
+                    {% if product.image %}
+
+                    <img
+                        src="{{ product.image }}"
+                        alt="{{ product.name }}"
+                        class="current-product-image"
+                    >
+
+                    {% else %}
+
+                    <div class="no-current-image">
+                        No Image
+                    </div>
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- NEW IMAGE -->
+
+                <div class="form-group">
+
+                    <label for="image">
+                        Replace Image
+                    </label>
+
+                    <input
+                        type="file"
+                        id="image"
+                        name="image"
+                        class="form-control"
+                        accept="image/jpeg,image/png,image/webp"
+                    >
+
+                    <div class="image-upload-info">
+                        Leave empty to keep the current image.
+                    </div>
+
+                </div>
+
+
+                <!-- PRICE -->
+
+                <div class="form-group">
+
+                    <label for="price">
+                        Price
+                        <span class="required">*</span>
+                    </label>
+
+                    <div class="price-input-wrapper">
+
+                        <span class="price-symbol">
+                            ₹
+                        </span>
+
+                        <input
+                            type="number"
+                            id="price"
+                            name="price"
+                            class="form-control price-input"
+                            value="{{ product.price }}"
+                            min="0"
+                            step="0.01"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- CATEGORY -->
+
+                <div class="form-group">
+
+                    <label for="category">
+                        Category
+                        <span class="required">*</span>
+                    </label>
+
+                    <select
+                        id="category"
+                        name="category"
+                        class="form-control"
+                        required
+                    >
+
+                        <option
+                            value="Birthday"
+                            {% if product.category == "Birthday" %}selected{% endif %}
+                        >
+                            Birthday
+                        </option>
+
+                        <option
+                            value="Anniversary"
+                            {% if product.category == "Anniversary" %}selected{% endif %}
+                        >
+                            Anniversary
+                        </option>
+
+                        <option
+                            value="Wedding"
+                            {% if product.category == "Wedding" %}selected{% endif %}
+                        >
+                            Wedding
+                        </option>
+
+                        <option
+                            value="Personalized"
+                            {% if product.category == "Personalized" %}selected{% endif %}
+                        >
+                            Personalized
+                        </option>
+
+                        <option
+                            value="Corporate"
+                            {% if product.category == "Corporate" %}selected{% endif %}
+                        >
+                            Corporate
+                        </option>
+
+                        <option
+                            value="Festive"
+                            {% if product.category == "Festive" %}selected{% endif %}
+                        >
+                            Festive
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ACTIONS -->
+
+                <div class="form-actions">
+
+                    <a
+                        href="/admin/products"
+                        class="cancel-btn"
+                    >
+                        Cancel
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="submit-btn"
+                    >
+                        Update Product
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

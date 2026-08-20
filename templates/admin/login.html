@@ -1,0 +1,241 @@
+{% extends "shared/base.html" %}
+
+{% block title %}Admin Login — GiftAura+{% endblock %}
+
+{% block content %}
+
+<style>
+    /* ============================================================
+       ADMIN LOGIN
+       ============================================================ */
+
+    .admin-login-page {
+        min-height: calc(100vh - 160px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 20px;
+        background: #f8f6f0;
+    }
+
+    .admin-login-card {
+        width: 100%;
+        max-width: 430px;
+        background: #ffffff;
+        border: 1px solid #e8e1d4;
+        border-radius: 16px;
+        padding: 42px;
+        box-shadow: 0 12px 35px rgba(17, 35, 26, 0.08);
+    }
+
+    .admin-login-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .admin-login-logo {
+        width: 58px;
+        height: 58px;
+        margin: 0 auto 18px;
+        border-radius: 50%;
+        background: #11231A;
+        color: #C19B54;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+        font-weight: 700;
+    }
+
+    .admin-login-header h1 {
+        margin: 0 0 8px;
+        color: #11231A;
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    .admin-login-header p {
+        margin: 0;
+        color: #777;
+        font-size: 14px;
+    }
+
+    .admin-login-badge {
+        display: inline-block;
+        margin-top: 12px;
+        padding: 6px 12px;
+        border-radius: 20px;
+        background: #f5efe3;
+        color: #A8813C;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .admin-form-group {
+        margin-bottom: 20px;
+    }
+
+    .admin-form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #11231A;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .admin-form-group input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 13px 14px;
+        border: 1px solid #d9d2c5;
+        border-radius: 9px;
+        background: #fff;
+        color: #11231A;
+        font-size: 14px;
+        outline: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .admin-form-group input:focus {
+        border-color: #C19B54;
+        box-shadow: 0 0 0 3px rgba(193, 155, 84, 0.12);
+    }
+
+    .admin-login-button {
+        width: 100%;
+        border: none;
+        border-radius: 9px;
+        padding: 14px;
+        background: #11231A;
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .admin-login-button:hover {
+        background: #1b382a;
+        transform: translateY(-1px);
+    }
+
+    .admin-alert {
+        margin-bottom: 20px;
+        padding: 12px 14px;
+        border-radius: 8px;
+        background: #fff1f1;
+        border: 1px solid #f0caca;
+        color: #a33a3a;
+        font-size: 13px;
+    }
+
+    .admin-login-footer {
+        margin-top: 25px;
+        padding-top: 20px;
+        border-top: 1px solid #eee8dd;
+        text-align: center;
+        color: #888;
+        font-size: 12px;
+    }
+
+    @media (max-width: 500px) {
+        .admin-login-page {
+            padding: 30px 15px;
+        }
+
+        .admin-login-card {
+            padding: 30px 22px;
+        }
+
+        .admin-login-header h1 {
+            font-size: 24px;
+        }
+    }
+</style>
+
+
+<div class="admin-login-page">
+
+    <div class="admin-login-card">
+
+        <div class="admin-login-header">
+
+            <div class="admin-login-logo">
+                G+
+            </div>
+
+            <h1>Admin Login</h1>
+
+            <p>Sign in to manage your GiftAura+ store.</p>
+
+            <span class="admin-login-badge">
+                ADMIN PANEL
+            </span>
+
+        </div>
+
+
+        {% if message %}
+        <div class="admin-alert">
+            {{ message }}
+        </div>
+        {% endif %}
+
+
+        <form method="POST" action="/admin/login">
+
+            <div class="admin-form-group">
+
+                <label for="login">
+                    Username or Email
+                </label>
+
+                <input
+                    type="text"
+                    id="login"
+                    name="login"
+                    placeholder="Enter username or email"
+                    autocomplete="username"
+                    required
+                >
+
+            </div>
+
+
+            <div class="admin-form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="admin-login-button"
+            >
+                Sign In to Admin Panel
+            </button>
+
+        </form>
+
+
+        <div class="admin-login-footer">
+            GiftAura+ Admin Management System
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

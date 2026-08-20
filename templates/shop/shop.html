@@ -1,20 +1,138 @@
 {% extends 'shared/base.html' %}
 
-{% block title %}Shop — GiftAura{% endblock %}
+{% block title %}Shop — GiftAura+{% endblock %}
 
 {% block content %}
+
+<style>
+    .shop-page {
+        min-height: calc(100vh - 120px);
+        padding: 40px 5%;
+        background: #FBF9F4;
+    }
+    .shop-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .shop-header {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    .shop-header h1 {
+        font-size: 36px;
+        color: #11231A;
+        margin: 0 0 8px;
+    }
+    .shop-header p {
+        color: #777;
+        font-size: 15px;
+    }
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 30px;
+    }
+    .product-card {
+        background: white;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    }
+    .product-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        display: block;
+        background: #f0ede7;
+    }
+    .product-card .no-image {
+        width: 100%;
+        height: 220px;
+        background: #f0ede7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #aaa;
+        font-size: 14px;
+    }
+    .product-info {
+        padding: 18px;
+    }
+    .product-info .name {
+        font-size: 18px;
+        font-weight: 600;
+        color: #11231A;
+        margin: 0 0 6px;
+    }
+    .product-info .category {
+        font-size: 13px;
+        color: #80652D;
+        background: #F4EBDD;
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 20px;
+        margin-bottom: 8px;
+    }
+    .product-info .price {
+        font-size: 20px;
+        font-weight: 700;
+        color: #C19B54;
+        margin: 6px 0 0;
+    }
+    .no-products {
+        text-align: center;
+        padding: 60px 20px;
+        color: #888;
+        font-size: 16px;
+    }
+    @media (max-width: 600px) {
+        .shop-page { padding: 25px 15px; }
+        .shop-header h1 { font-size: 28px; }
+        .product-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
+        .product-card img { height: 150px; }
+        .product-info .name { font-size: 15px; }
+        .product-info .price { font-size: 17px; }
+    }
+</style>
+
 <section class="shop-page">
-    <div class="section-header">
-        <div class="title-group">
-            <h2>All Products</h2>
-            <span class="decor-line"></span>
+    <div class="shop-container">
+        <div class="shop-header">
+            <h1>Our Collection</h1>
+            <p>Discover the perfect gift for every occasion.</p>
         </div>
+
+        {% if products %}
+        <div class="product-grid">
+            {% for product in products %}
+            <a href="/shop/product/{{ product._id }}" class="product-card">
+                {% if product.image %}
+                <img src="{{ product.image }}" alt="{{ product.name }}">
+                {% else %}
+                <div class="no-image">No image</div>
+                {% endif %}
+                <div class="product-info">
+                    <span class="category">{{ product.category }}</span>
+                    <div class="name">{{ product.name }}</div>
+                    <div class="price">₹{{ "%.2f"|format(product.price) }}</div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-products">
+            <p>No products available yet. Check back soon!</p>
+        </div>
+        {% endif %}
     </div>
-    <div class="product-grid">
-        {% for product in products %}
-            {% include 'components/product_card.html' %}
-        {% endfor %}
-    </div>
-    {% include 'components/pagination.html' %}
 </section>
+
 {% endblock %}

@@ -1,17 +1,477 @@
 {% extends 'shared/base.html' %}
 
-{% block title %}Product Details — GiftAura{% endblock %}
+{% block title %}
+{{ product.name }} — GiftAura+
+{% endblock %}
 
 {% block content %}
-<section class="product-details">
-    <div class="product-image">
-        <img src="{{ product.image }}" alt="{{ product.title }}" />
+
+<style>
+
+    /* =====================================================
+       PRODUCT DETAILS
+       ===================================================== */
+
+    .product-details-page {
+        min-height: calc(100vh - 120px);
+        padding: 60px 5%;
+        background: #FBF9F4;
+    }
+
+    .product-details-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* =====================================================
+       BREADCRUMB
+       ===================================================== */
+
+    .product-breadcrumb {
+        margin-bottom: 30px;
+        font-size: 14px;
+        color: #777;
+    }
+
+    .product-breadcrumb a {
+        color: #80652D;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .product-breadcrumb a:hover {
+        text-decoration: underline;
+    }
+
+    /* =====================================================
+       PRODUCT LAYOUT
+       ===================================================== */
+
+    .product-details-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 55px;
+
+        background: white;
+
+        padding: 35px;
+
+        border-radius: 16px;
+
+        box-shadow:
+            0 8px 30px rgba(0, 0, 0, 0.07);
+    }
+
+    /* =====================================================
+       PRODUCT IMAGE
+       ===================================================== */
+
+    .product-details-image-wrapper {
+        width: 100%;
+        min-height: 500px;
+
+        background: #F6F3EC;
+
+        border-radius: 12px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        overflow: hidden;
+    }
+
+    .product-details-image {
+        width: 100%;
+        height: 500px;
+
+        object-fit: cover;
+
+        display: block;
+    }
+
+    .product-no-image {
+        color: #999;
+        font-size: 15px;
+    }
+
+    /* =====================================================
+       PRODUCT INFORMATION
+       ===================================================== */
+
+    .product-details-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* =====================================================
+       CATEGORY
+       ===================================================== */
+
+    .product-category {
+        display: inline-block;
+
+        width: fit-content;
+
+        padding: 7px 13px;
+
+        margin-bottom: 18px;
+
+        border-radius: 20px;
+
+        background: #F4EBDD;
+
+        color: #80652D;
+
+        font-size: 13px;
+
+        font-weight: 600;
+    }
+
+    /* =====================================================
+       TITLE
+       ===================================================== */
+
+    .product-details-info h1 {
+        margin: 0 0 18px;
+
+        color: #11231A;
+
+        font-size: 38px;
+
+        line-height: 1.2;
+    }
+
+    /* =====================================================
+       PRICE
+       ===================================================== */
+
+    .product-details-price {
+        margin-bottom: 25px;
+
+        color: #C19B54;
+
+        font-size: 30px;
+
+        font-weight: 700;
+    }
+
+    /* =====================================================
+       DESCRIPTION
+       ===================================================== */
+
+    .product-description-title {
+        margin-bottom: 8px;
+
+        color: #11231A;
+
+        font-size: 16px;
+
+        font-weight: 700;
+    }
+
+    .product-description {
+        margin: 0 0 30px;
+
+        color: #666;
+
+        font-size: 16px;
+
+        line-height: 1.7;
+    }
+
+    /* =====================================================
+       PRODUCT META
+       ===================================================== */
+
+    .product-meta {
+        margin-bottom: 30px;
+
+        padding: 18px;
+
+        background: #FBF9F4;
+
+        border-radius: 10px;
+    }
+
+    .product-meta-row {
+        display: flex;
+
+        justify-content: space-between;
+
+        gap: 20px;
+
+        padding: 7px 0;
+
+        font-size: 14px;
+    }
+
+    .product-meta-label {
+        color: #777;
+    }
+
+    .product-meta-value {
+        color: #11231A;
+
+        font-weight: 600;
+
+        text-align: right;
+    }
+
+    /* =====================================================
+       ADD TO CART
+       ===================================================== */
+
+    .btn-primary {
+        width: 100%;
+
+        padding: 15px 22px;
+
+        border: none;
+
+        border-radius: 9px;
+
+        background: #11231A;
+
+        color: white;
+
+        font-size: 15px;
+
+        font-weight: 600;
+
+        cursor: pointer;
+
+        transition:
+            background 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .btn-primary:hover {
+        background: #1C382A;
+
+        transform: translateY(-1px);
+    }
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @media (max-width: 850px) {
+
+        .product-details-page {
+            padding: 35px 15px;
+        }
+
+        .product-details-card {
+            grid-template-columns: 1fr;
+
+            gap: 30px;
+
+            padding: 20px;
+        }
+
+        .product-details-image-wrapper {
+            min-height: auto;
+        }
+
+        .product-details-image {
+            height: 400px;
+        }
+
+        .product-details-info h1 {
+            font-size: 30px;
+        }
+
+    }
+
+    @media (max-width: 500px) {
+
+        .product-details-image {
+            height: 300px;
+        }
+
+        .product-details-info h1 {
+            font-size: 26px;
+        }
+
+        .product-details-price {
+            font-size: 25px;
+        }
+
+    }
+
+</style>
+
+
+<section class="product-details-page">
+
+    <div class="product-details-container">
+
+
+        <!-- =================================================
+             BREADCRUMB
+             ================================================= -->
+
+        <div class="product-breadcrumb">
+
+            <a href="/">
+                Home
+            </a>
+
+            &nbsp; / &nbsp;
+
+            <a href="/shop">
+                Shop
+            </a>
+
+            &nbsp; / &nbsp;
+
+            {{ product.name }}
+
+        </div>
+
+
+        <!-- =================================================
+             PRODUCT
+             ================================================= -->
+
+        <div class="product-details-card">
+
+
+            <!-- =================================================
+                 IMAGE
+                 ================================================= -->
+
+            <div class="product-details-image-wrapper">
+
+                {% if product.image %}
+
+                <img
+                    src="{{ product.image }}"
+                    alt="{{ product.name }}"
+                    class="product-details-image"
+                >
+
+                {% else %}
+
+                <div class="product-no-image">
+                    No image available
+                </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- =================================================
+                 INFORMATION
+                 ================================================= -->
+
+            <div class="product-details-info">
+
+
+                <!-- CATEGORY -->
+
+                {% if product.category %}
+
+                <span class="product-category">
+
+                    {{ product.category }}
+
+                </span>
+
+                {% endif %}
+
+
+                <!-- NAME -->
+
+                <h1>
+                    {{ product.name }}
+                </h1>
+
+
+                <!-- PRICE -->
+
+                <div class="product-details-price">
+
+                    ₹{{ "%.2f"|format(product.price) }}
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="product-description-title">
+
+                    About this product
+
+                </div>
+
+                <p class="product-description">
+
+                    {% if product.description %}
+
+                        {{ product.description }}
+
+                    {% else %}
+
+                        A beautiful personalized gift from
+                        GiftAura+, made especially for your
+                        special moments.
+
+                    {% endif %}
+
+                </p>
+
+
+                <!-- PRODUCT META -->
+
+                <div class="product-meta">
+
+                    <div class="product-meta-row">
+
+                        <span class="product-meta-label">
+                            Category
+                        </span>
+
+                        <span class="product-meta-value">
+                            {{ product.category }}
+                        </span>
+
+                    </div>
+
+                    <div class="product-meta-row">
+
+                        <span class="product-meta-label">
+                            Product
+                        </span>
+
+                        <span class="product-meta-value">
+                            GiftAura+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ADD TO CART -->
+
+                <button
+                    type="button"
+                    class="btn-primary"
+                >
+                    Add to Cart
+                </button>
+
+
+            </div>
+
+        </div>
+
     </div>
-    <div class="product-info">
-        <h1>{{ product.title }}</h1>
-        <p class="price">${{ product.price }}</p>
-        <p>{{ product.description }}</p>
-        <button class="btn-primary">Add to Cart</button>
-    </div>
+
 </section>
+
 {% endblock %}
