@@ -91,7 +91,7 @@ pip --version
 ## 1. Clone the Repository
 
 ```bash
-git clone https://github.com/nikhilsarojbwr-stack/GiftAura.git
+git clone https://github.com/nikhilsarojbwr-stack/GiftauraCa2
 ```
 
 Move into the project directory:
