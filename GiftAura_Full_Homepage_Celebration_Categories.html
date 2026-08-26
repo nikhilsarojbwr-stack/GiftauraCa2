@@ -1,0 +1,2301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GiftAura — Budget-Friendly Event & Balloon Decoration</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ============================================================
+                   1.  GLOBAL DESIGN SYSTEM (CSS Variables)
+                   ============================================================ */
+        :root {
+            --color-primary-dark: #11231A;
+            --color-primary-gold: #C19B54;
+            --color-primary-gold-dark: #A8813C;
+            --color-body-bg: #FBF9F4;
+            --color-card-bg-occasion: #FEF2F2;
+            --color-text-primary: #222222;
+            --color-text-secondary: #666666;
+            --color-white: #FFFFFF;
+            --color-border-light: #EAEAEA;
+            --color-input-bg: #F9F9F9;
+            --color-footer-bg: #0A1410;
+
+            --font-serif: 'Playfair Display', 'Merriweather', serif;
+            --font-sans: 'Poppins', 'Montserrat', sans-serif;
+            --font-script: 'Great Vibes', 'Dancing Script', cursive;
+
+            --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.05);
+            --shadow-drop: 0 10px 10px rgba(0, 0, 0, 0.10);
+
+            --radius-card: 8px;
+            --radius-btn: 30px;
+            --radius-category: 20px;
+            --radius-form: 6px;
+            --radius-occasion: 12px;
+
+            --section-spacing: 80px 5%;
+            --nav-padding: 15px 5%;
+        }
+
+        /* Reset & Base */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-body-bg);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* ============================================================
+                   2.  HEADER & NAVIGATION (Fixed / Sticky Top)
+                   ============================================================ */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--color-primary-dark);
+            color: var(--color-white);
+            padding: var(--nav-padding);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Logo */
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--color-white);
+        }
+        .logo .star {
+            color: var(--color-primary-gold);
+            font-size: 22px;
+            margin-left: 2px;
+        }
+        .logo-sub {
+            font-size: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+            display: block;
+            margin-top: -4px;
+            font-weight: 300;
+        }
+
+        /* Nav Links (center) */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.85);
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+        .nav-links a:hover {
+            color: var(--color-primary-gold);
+        }
+        .nav-links a.active {
+            color: var(--color-white);
+            border-bottom: 2px solid var(--color-primary-gold);
+        }
+        .nav-links .dropdown-arrow {
+            font-size: 10px;
+            margin-left: 3px;
+            opacity: 0.6;
+        }
+
+        /* Actions (right) */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 6px 14px;
+            gap: 8px;
+            transition: background 0.3s;
+        }
+        .search-bar:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .search-bar input {
+            background: transparent;
+            border: none;
+            color: var(--color-white);
+            font-size: 13px;
+            font-family: var(--font-sans);
+            outline: none;
+            width: 100px;
+        }
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        .search-bar .search-icon {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 16px;
+            line-height: 1;
+        }
+
+        .action-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: color 0.3s;
+            position: relative;
+        }
+        .action-icon:hover {
+            color: var(--color-white);
+        }
+        .action-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+        }
+        .action-icon .label {
+            font-size: 9px;
+            margin-top: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .cart-badge {
+            position: absolute;
+            top: -6px;
+            right: -10px;
+            background: var(--color-primary-gold);
+            color: var(--color-white);
+            font-size: 9px;
+            font-weight: 600;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ============================================================
+                   3.  HERO SECTION
+                   ============================================================ */
+        .hero {
+            background: var(--color-primary-dark);
+            color: var(--color-white);
+            padding: 60px 5% 50px;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            min-height: 85vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            right: -10%;
+            top: -20%;
+            width: 60%;
+            height: 140%;
+            background: radial-gradient(ellipse at 70% 50%, rgba(193, 155, 84, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-content h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(38px, 5vw, 54px);
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .hero-content h1 .highlight {
+            font-style: italic;
+            color: var(--color-primary-gold);
+        }
+        .hero-content p {
+            font-family: var(--font-sans);
+            font-size: 16px;
+            color: #d0d0d0;
+            max-width: 80%;
+            margin-bottom: 32px;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .btn-primary {
+            background: var(--color-primary-gold);
+            color: var(--color-white);
+            border: none;
+            border-radius: var(--radius-btn);
+            padding: 12px 28px;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .btn-primary:hover {
+            background: var(--color-primary-gold-dark);
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-primary-gold);
+            border: 1px solid var(--color-primary-gold);
+            border-radius: var(--radius-btn);
+            padding: 12px 28px;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s, transform 0.2s;
+        }
+        .btn-secondary:hover {
+            background: var(--color-primary-gold);
+            color: var(--color-white);
+            transform: translateY(-2px);
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px 0;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            width: 100%;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0 24px;
+            border-right: 1px solid rgba(255, 255, 255, 0.15);
+            flex: 1 0 auto;
+            min-width: 120px;
+        }
+        .trust-item:last-child {
+            border-right: none;
+        }
+        .trust-item .icon {
+            font-size: 22px;
+            color: var(--color-primary-gold);
+            line-height: 1;
+        }
+        .trust-item .text {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+        .trust-item .text strong {
+            color: var(--color-white);
+            font-weight: 500;
+        }
+
+        .hero-visual {
+            flex: 1;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero-visual img {
+            width: 100%;
+            max-width: 520px;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            object-fit: cover;
+            aspect-ratio: 4/5;
+            background: #1a2d22;
+        }
+
+        /* ============================================================
+                   4.  OUR BEST SELLERS
+                   ============================================================ */
+        .section-best-sellers {
+            padding: var(--section-spacing);
+            background: var(--color-body-bg);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+        .section-header .title-group {
+            text-align: center;
+            flex: 1;
+        }
+        .section-header h2 {
+            font-family: var(--font-serif);
+            font-size: 34px;
+            font-weight: 600;
+            color: var(--color-text-primary);
+        }
+        .section-header .decor-line {
+            display: block;
+            width: 50px;
+            height: 2px;
+            background: var(--color-primary-gold);
+            margin: 6px auto 0;
+            position: relative;
+        }
+        .section-header .decor-line::before {
+            content: '◆';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--color-primary-gold);
+            font-size: 10px;
+        }
+        .btn-view-all {
+            border: 1px solid var(--color-primary-gold);
+            color: var(--color-primary-gold);
+            background: transparent;
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 13px;
+            font-family: var(--font-sans);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .btn-view-all:hover {
+            background: var(--color-primary-gold);
+            color: var(--color-white);
+        }
+
+        /* Product Carousel */
+        .product-carousel {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .product-card {
+            background: var(--color-white);
+            border-radius: var(--radius-card);
+            padding: 12px;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .product-card .image-wrap {
+            position: relative;
+            border-radius: 6px;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+            background: #f0ede7;
+        }
+        .product-card .image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .badge-bestseller {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--color-white);
+            color: var(--color-primary-gold);
+            border: 1px solid var(--color-primary-gold);
+            font-size: 10px;
+            font-weight: 600;
+            padding: 2px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .wishlist-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.85);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+            color: #999;
+        }
+        .wishlist-icon:hover {
+            background: var(--color-white);
+            color: #e74c3c;
+        }
+
+        .product-card .info {
+            padding: 10px 2px 4px;
+        }
+        .product-card .info .title {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--color-text-primary);
+            margin-bottom: 2px;
+        }
+        .product-card .info .price {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+        .product-card .info .price .old {
+            text-decoration: line-through;
+            margin-right: 8px;
+            color: #aaa;
+            font-size: 12px;
+        }
+
+        .quick-view {
+            display: none;
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #ddd;
+            color: var(--color-primary-gold);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .product-card:hover .quick-view {
+            display: block;
+        }
+        .quick-view:hover {
+            background: var(--color-primary-gold);
+            color: var(--color-white);
+            border-color: var(--color-primary-gold);
+        }
+
+        /* ============================================================
+                   5.  SHOP BY CATEGORY  (Portrait Arches)
+                   ============================================================ */
+        .section-categories {
+            padding: var(--section-spacing);
+            background: var(--color-body-bg);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .category-card {
+            border-radius: var(--radius-category);
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 3/4;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+        }
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .category-card .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 16px 8px;
+            text-align: center;
+        }
+        .category-card .overlay .icon {
+            font-size: 24px;
+            color: var(--color-primary-gold);
+            margin-bottom: 4px;
+        }
+        .category-card .overlay .label {
+            color: var(--color-white);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============================================================
+                   6.  SHOP BY OCCASION  (Floating Images)
+                   ============================================================ */
+        .section-occasions {
+            padding: var(--section-spacing);
+            background: var(--color-body-bg);
+        }
+
+        .occasion-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .occasion-item {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .occasion-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .occasion-card {
+            background: var(--color-card-bg-occasion);
+            border-radius: var(--radius-occasion);
+            aspect-ratio: 1/1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            transition: box-shadow 0.3s;
+            box-shadow: var(--shadow-card);
+        }
+        .occasion-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+        .occasion-card img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            filter: drop-shadow(var(--shadow-drop));
+            transition: transform 0.3s;
+        }
+        .occasion-item:hover .occasion-card img {
+            transform: scale(1.04);
+        }
+
+        .occasion-item .label {
+            display: block;
+            margin-top: 10px;
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--color-text-primary);
+        }
+
+        /* ============================================================
+                   7.  DESIGN YOUR DREAM GIFT  (Custom Order)
+                   ============================================================ */
+        .section-dream-gift {
+            padding: var(--section-spacing);
+            background: var(--color-primary-dark);
+            position: relative;
+            overflow: hidden;
+        }
+        .section-dream-gift::before,
+        .section-dream-gift::after {
+            content: '';
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(193, 155, 84, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .section-dream-gift::before {
+            top: -60px;
+            left: -60px;
+        }
+        .section-dream-gift::after {
+            bottom: -60px;
+            right: -60px;
+        }
+
+        .dream-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Left Copy */
+        .dream-copy .overline {
+            color: var(--color-primary-gold);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+        .dream-copy h2 {
+            font-family: var(--font-serif);
+            font-size: 38px;
+            font-weight: 600;
+            color: var(--color-white);
+            margin: 8px 0 18px;
+            line-height: 1.2;
+        }
+        .dream-copy p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+            max-width: 90%;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .dream-stats {
+            display: flex;
+            gap: 40px;
+        }
+        .dream-stats .stat .number {
+            color: var(--color-primary-gold);
+            font-size: 28px;
+            font-weight: 700;
+            display: block;
+            line-height: 1.2;
+        }
+        .dream-stats .stat .sub {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            font-weight: 300;
+        }
+
+        /* Right Form */
+        .dream-form-wrap {
+            background: var(--color-white);
+            border-radius: var(--radius-occasion);
+            padding: 32px 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        }
+        .dream-form-wrap h3 {
+            font-family: var(--font-serif);
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-bottom: 4px;
+        }
+        .dream-form-wrap .form-sub {
+            color: var(--color-text-secondary);
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .dream-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .dream-form .full-width {
+            grid-column: span 2;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .form-group label {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .form-group input,
+        .form-group select {
+            background: var(--color-input-bg);
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--radius-form);
+            padding: 11px 14px;
+            font-size: 14px;
+            font-family: var(--font-sans);
+            color: var(--color-text-primary);
+            outline: none;
+            transition: border 0.3s;
+            width: 100%;
+        }
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--color-primary-gold);
+        }
+        .form-group input::placeholder {
+            color: #bbb;
+        }
+
+        .file-upload-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            background: var(--color-input-bg);
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--radius-form);
+            overflow: hidden;
+        }
+        .file-upload-wrap input[type="text"] {
+            border: none;
+            background: transparent;
+            padding: 11px 14px;
+            flex: 1;
+            font-size: 14px;
+            font-family: var(--font-sans);
+            color: var(--color-text-primary);
+            outline: none;
+        }
+        .file-upload-wrap .upload-btn {
+            background: var(--color-primary-gold);
+            color: var(--color-white);
+            border: none;
+            padding: 11px 20px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: var(--font-sans);
+            transition: background 0.3s;
+            white-space: nowrap;
+        }
+        .file-upload-wrap .upload-btn:hover {
+            background: var(--color-primary-gold-dark);
+        }
+
+        .btn-submit {
+            grid-column: span 2;
+            background: linear-gradient(to right, var(--color-primary-gold), var(--color-primary-gold-dark));
+            color: var(--color-white);
+            border: none;
+            padding: 14px;
+            border-radius: var(--radius-form);
+            font-size: 16px;
+            font-weight: 600;
+            font-family: var(--font-sans);
+            cursor: pointer;
+            transition: opacity 0.3s, transform 0.2s;
+            margin-top: 4px;
+        }
+        .btn-submit:hover {
+            opacity: 0.92;
+            transform: translateY(-2px);
+        }
+
+        .form-micro {
+            grid-column: span 2;
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            text-align: center;
+            margin-top: 2px;
+        }
+
+        /* ============================================================
+                   8.  WHY CHOOSE GIFTAURA?  (Features Grid)
+                   ============================================================ */
+        .section-why {
+            padding: var(--section-spacing);
+            background: var(--color-body-bg);
+        }
+
+        .features-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 28px 50px;
+            margin-top: 10px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 0 0 auto;
+            max-width: 260px;
+        }
+        .feature-item .icon {
+            font-size: 32px;
+            color: var(--color-primary-gold);
+            width: 44px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .feature-item .text .title {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--color-text-primary);
+        }
+        .feature-item .text .desc {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            line-height: 1.4;
+        }
+
+        /* ============================================================
+                   9.  HAPPY MEMORIES  (Testimonial Slider)
+                   ============================================================ */
+        .section-testimonials {
+            padding: var(--section-spacing);
+            background: var(--color-body-bg);
+        }
+
+        .testimonial-layout {
+            display: flex;
+            gap: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--color-white);
+            box-shadow: var(--shadow-card);
+        }
+
+        .testimonial-left {
+            flex: 0 0 28%;
+            background: var(--color-primary-dark);
+            padding: 40px 30px;
+            color: var(--color-white);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .testimonial-left h3 {
+            font-family: var(--font-serif);
+            font-size: 28px;
+            font-weight: 600;
+        }
+        .testimonial-left h3 span {
+            color: var(--color-primary-gold);
+        }
+        .testimonial-left .sub {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            font-weight: 300;
+            margin: 6px 0 20px;
+        }
+        .testimonial-left .controls {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .testimonial-left .controls button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--color-primary-gold);
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .testimonial-left .controls button:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .testimonial-right {
+            flex: 1;
+            padding: 40px 30px;
+            overflow-x: auto;
+            display: flex;
+            gap: 24px;
+            scroll-snap-type: x mandatory;
+            background: #fcfaf7;
+        }
+        .testimonial-right::-webkit-scrollbar {
+            height: 4px;
+        }
+        .testimonial-right::-webkit-scrollbar-thumb {
+            background: var(--color-primary-gold);
+            border-radius: 10px;
+        }
+
+        .testimonial-card {
+            flex: 0 0 300px;
+            background: var(--color-white);
+            border-radius: var(--radius-occasion);
+            padding: 20px;
+            box-shadow: var(--shadow-card);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            scroll-snap-align: start;
+        }
+        .testimonial-card .top {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+        .testimonial-card .top img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .testimonial-card .top .quote-icon {
+            font-size: 28px;
+            color: var(--color-primary-gold);
+            opacity: 0.2;
+            line-height: 1;
+            margin-top: -4px;
+        }
+        .testimonial-card .review {
+            font-style: italic;
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+            margin: 4px 0 2px;
+        }
+        .testimonial-card .name {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--color-text-primary);
+        }
+        .testimonial-card .stars {
+            color: var(--color-primary-gold);
+            font-size: 15px;
+            letter-spacing: 2px;
+        }
+
+        /* ============================================================
+                   10. FAQ & FOOTER
+                   ============================================================ */
+        .section-faq {
+            padding: var(--section-spacing);
+            background: var(--color-body-bg);
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 20px auto 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 40px;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--color-border-light);
+            padding: 14px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .faq-item:hover {
+            color: var(--color-primary-gold);
+        }
+        .faq-item .q {
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .faq-item .plus {
+            font-size: 18px;
+            color: var(--color-primary-gold);
+            font-weight: 300;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--color-footer-bg);
+            color: var(--color-white);
+            padding: 60px 5% 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 25% 20% 30% 25%;
+            gap: 30px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .footer-col h4 {
+            color: var(--color-primary-gold);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .footer-col p,
+        .footer-col a {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.8;
+            display: block;
+            transition: color 0.3s, opacity 0.3s;
+        }
+        .footer-col a:hover {
+            color: var(--color-primary-gold);
+            opacity: 1;
+        }
+        .footer-col .brand {
+            font-family: var(--font-serif);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 4px;
+        }
+        .footer-col .brand .star {
+            color: var(--color-primary-gold);
+        }
+        .footer-col .tagline {
+            font-size: 12px;
+            opacity: 0.5;
+            margin-bottom: 12px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .social-icons a {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s;
+        }
+        .social-icons a:hover {
+            border-color: var(--color-primary-gold);
+            color: var(--color-primary-gold);
+            background: rgba(193, 155, 84, 0.06);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 24px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.3);
+            margin-left: 16px;
+            transition: color 0.3s;
+        }
+        .footer-bottom a:hover {
+            color: var(--color-primary-gold);
+        }
+
+
+        /* ============================================================
+           5B. GIFTAURA CELEBRATION CATEGORY CARDS
+           ============================================================ */
+        .celebration-header {
+            margin-bottom: 38px;
+        }
+
+        .celebration-header .title-group {
+            text-align: center;
+        }
+
+        .section-kicker {
+            display: block;
+            color: var(--color-primary-gold);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            margin-bottom: 6px;
+        }
+
+        .celebration-header h2 {
+            font-size: clamp(30px, 4vw, 42px);
+            margin-bottom: 4px;
+        }
+
+        .celebration-header p {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .celebration-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 0;
+        }
+
+        .celebration-card {
+            aspect-ratio: auto;
+            background: var(--color-white);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(17, 35, 26, 0.08);
+            border: 1px solid rgba(193, 155, 84, 0.12);
+            transition: transform .35s ease, box-shadow .35s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .celebration-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 42px rgba(17, 35, 26, 0.14);
+        }
+
+        .category-visual {
+            min-height: 245px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: white;
+        }
+
+        .category-visual::before,
+        .category-visual::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,.13);
+        }
+
+        .category-visual::before {
+            width: 180px;
+            height: 180px;
+            top: -65px;
+            right: -45px;
+        }
+
+        .category-visual::after {
+            width: 120px;
+            height: 120px;
+            bottom: -55px;
+            left: -35px;
+        }
+
+        .birthday-visual {
+            background:
+                radial-gradient(circle at 20% 25%, rgba(255,255,255,.2) 0 4px, transparent 5px),
+                radial-gradient(circle at 80% 18%, rgba(255,255,255,.2) 0 5px, transparent 6px),
+                linear-gradient(135deg, #4c1d2a, #c16c54 55%, #e7a95c);
+        }
+
+        .anniversary-visual {
+            background:
+                radial-gradient(circle at 15% 20%, rgba(255,255,255,.2) 0 5px, transparent 6px),
+                linear-gradient(135deg, #4b101a, #a62d40 55%, #df7d82);
+        }
+
+        .romantic-visual {
+            background:
+                radial-gradient(circle at 82% 22%, rgba(255,255,255,.18) 0 4px, transparent 5px),
+                linear-gradient(135deg, #3d112f, #8d275e 55%, #e76d9b);
+        }
+
+        .proposal-visual {
+            background:
+                radial-gradient(circle at 75% 20%, rgba(255,255,255,.18) 0 5px, transparent 6px),
+                linear-gradient(135deg, #201233, #67378c 55%, #c56ac9);
+        }
+
+        .cafe-visual {
+            background:
+                radial-gradient(circle at 20% 25%, rgba(255,255,255,.18) 0 5px, transparent 6px),
+                linear-gradient(135deg, #3d2618, #9b6036 55%, #d9a15b);
+        }
+
+        .custom-visual {
+            background:
+                radial-gradient(circle at 82% 20%, rgba(255,255,255,.2) 0 5px, transparent 6px),
+                linear-gradient(135deg, #0f3d39, #26716c 55%, #8abf9d);
+        }
+
+        .visual-decoration {
+            position: relative;
+            z-index: 2;
+            width: 128px;
+            height: 128px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 58px;
+            background: rgba(255,255,255,.14);
+            border: 1px solid rgba(255,255,255,.35);
+            box-shadow: 0 18px 50px rgba(0,0,0,.22);
+            backdrop-filter: blur(5px);
+        }
+
+        .visual-label {
+            position: absolute;
+            z-index: 3;
+            bottom: 18px;
+            left: 20px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            font-weight: 600;
+            color: rgba(255,255,255,.85);
+        }
+
+        .category-content {
+            padding: 20px 20px 18px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .category-title-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .category-icon {
+            width: 44px;
+            height: 44px;
+            flex: 0 0 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff4ef;
+            font-size: 21px;
+        }
+
+        .category-title-row h3 {
+            font-family: var(--font-serif);
+            font-size: 21px;
+            line-height: 1.15;
+            color: var(--color-primary-dark);
+            margin: 0;
+        }
+
+        .category-title-row p {
+            color: var(--color-text-secondary);
+            font-size: 11px;
+            margin-top: 3px;
+        }
+
+        .service-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 7px 10px;
+            margin-bottom: 18px;
+        }
+
+        .service-list a {
+            font-size: 11px;
+            line-height: 1.35;
+            color: #555;
+            padding: 7px 8px;
+            background: #fbfaf7;
+            border-radius: 6px;
+            border: 1px solid #eee9df;
+            transition: all .25s ease;
+        }
+
+        .service-list a::before {
+            content: "•";
+            color: var(--color-primary-gold);
+            margin-right: 5px;
+        }
+
+        .service-list a:hover {
+            color: var(--color-primary-dark);
+            border-color: var(--color-primary-gold);
+            background: #fffaf0;
+        }
+
+        .category-explore {
+            width: 100%;
+            margin-top: auto;
+            border: 1px solid var(--color-primary-gold);
+            background: transparent;
+            color: var(--color-primary-gold-dark);
+            border-radius: 24px;
+            padding: 10px 14px;
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+
+        .category-explore span {
+            margin-left: 7px;
+            transition: transform .3s ease;
+            display: inline-block;
+        }
+
+        .category-explore:hover {
+            background: var(--color-primary-gold);
+            color: white;
+        }
+
+        .category-explore:hover span {
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 1200px) {
+            .celebration-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .celebration-grid {
+                grid-template-columns: 1fr;
+                max-width: 560px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .category-visual {
+                min-height: 220px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .category-content {
+                padding: 16px;
+            }
+
+            .service-list {
+                grid-template-columns: 1fr;
+            }
+
+            .category-visual {
+                min-height: 190px;
+            }
+
+            .visual-decoration {
+                width: 105px;
+                height: 105px;
+                font-size: 48px;
+            }
+        }
+
+        /* ============================================================
+                   RESPONSIVE
+                   ============================================================ */
+        @media (max-width: 1200px) {
+            .category-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .occasion-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .product-carousel {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                min-height: auto;
+                padding: 50px 5% 40px;
+                text-align: center;
+            }
+            .hero-content p {
+                max-width: 100%;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .trust-bar {
+                justify-content: center;
+            }
+            .trust-item {
+                border-right: none;
+                padding: 0 12px;
+            }
+
+            .dream-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .dream-copy p {
+                max-width: 100%;
+            }
+            .dream-stats {
+                justify-content: center;
+            }
+
+            .testimonial-layout {
+                flex-direction: column;
+            }
+            .testimonial-left {
+                flex: 1;
+                text-align: center;
+            }
+            .testimonial-left .controls {
+                justify-content: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+            /* simple mobile nav fallback */
+            .nav-links.mobile-open {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                padding: 16px 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.06);
+            }
+            .nav-links.mobile-open a {
+                padding: 6px 0;
+            }
+            .hamburger {
+                display: flex !important;
+            }
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--color-white);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .occasion-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .product-carousel {
+                grid-template-columns: 1fr 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            .dream-form {
+                grid-template-columns: 1fr;
+            }
+            .dream-form .full-width {
+                grid-column: span 1;
+            }
+            .btn-submit {
+                grid-column: span 1;
+            }
+            .form-micro {
+                grid-column: span 1;
+            }
+            .section-header {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-actions .search-bar {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .product-carousel {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 30px;
+            }
+            .trust-item {
+                min-width: 80px;
+                padding: 0 8px;
+            }
+            .trust-item .text {
+                font-size: 10px;
+            }
+            .testimonial-card {
+                flex: 0 0 260px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+    HEADER
+    ============================================================ -->
+    <header class="site-header" id="header">
+        <!-- Logo -->
+        <div class="logo-wrapper">
+            <div>
+                <span class="logo">GiftAura<span class="star">✦</span></span>
+                <span class="logo-sub">MADE WITH LOVE, JUST FOR YOU</span>
+            </div>
+        </div>
+
+        <!-- Nav Links -->
+        <nav class="nav-links" id="navLinks">
+            <a href="#" class="active">Home</a>
+            <a href="#">Categories <span class="dropdown-arrow">▾</span></a>
+            <a href="#">Occasions <span class="dropdown-arrow">▾</span></a>
+            <a href="#">Corporate Gifting</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+        </nav>
+
+        <!-- Actions -->
+        <div class="header-actions">
+            <div class="search-bar">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Search decorations..." />
+            </div>
+            <div class="action-icon">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                </svg>
+                <span class="label">Wishlist</span>
+            </div>
+            <div class="action-icon">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1" />
+                    <circle cx="20" cy="21" r="1" />
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                </svg>
+                <span class="label">Cart</span>
+                <span class="cart-badge">2</span>
+            </div>
+            <div class="hamburger" id="hamburger" onclick="toggleMobileNav()">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    HERO
+    ============================================================ -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                Every Gift<br />
+                Becomes A <span class="highlight">Beautiful Memory</span>
+            </h1>
+            <p>
+                Beautiful, budget-friendly balloon decorations and event setups for birthdays, anniversaries, proposals, cafe celebrations &amp; more.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn-primary">🎈 Explore Decorations</button>
+                <button class="btn-secondary">Customize Yours</button>
+            </div>
+            <div class="trust-bar">
+                <div class="trust-item">
+                    <span class="icon">✦</span>
+                    <span class="text"><strong>Budget</strong> Friendly</span>
+                </div>
+                <div class="trust-item">
+                    <span class="icon">✧</span>
+                    <span class="text"><strong>Fully</strong> Customized</span>
+                </div>
+                <div class="trust-item">
+                    <span class="icon">◈</span>
+                    <span class="text"><strong>Creative</strong> Setups</span>
+                </div>
+                <div class="trust-item">
+                    <span class="icon">❖</span>
+                    <span class="text"><strong>On-Time</strong> Setup</span>
+                </div>
+                <div class="trust-item">
+                    <span class="icon">♢</span>
+                    <span class="text"><strong>Quick</strong> Support</span>
+                </div>
+                <div class="trust-item">
+                    <span class="icon">✦</span>
+                    <span class="text"><strong>Navi Mumbai</strong> Service</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='650' viewBox='0 0 520 650'%3E%3Crect width='520' height='650' fill='%231a2d22'/%3E%3Ctext x='260' y='300' font-family='Playfair Display,serif' font-size='28' fill='%23C19B54' text-anchor='middle' letter-spacing='2'%3EGiftAura%3C/text%3E%3Ctext x='260' y='340' font-family='Poppins,sans-serif' font-size='14' fill='%23aabbae' text-anchor='middle'%3E✦ Premium Gifts ✦%3C/text%3E%3C/svg%3E"
+            alt="GiftAura Premium Gift" />
+        </div>
+    </section>
+
+    <!-- ============================================================
+    OUR BEST SELLERS
+    ============================================================ -->
+    <section class="section-best-sellers">
+        <div class="section-header">
+            <div></div>
+            <div class="title-group">
+                <h2>Our Best Sellers</h2>
+                <span class="decor-line"></span>
+            </div>
+            <button class="btn-view-all">View All Products →</button>
+        </div>
+
+        <div class="product-carousel">
+            <!-- Card 1 -->
+            <div class="product-card">
+                <div class="image-wrap">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23e8e2d8'/%3E%3Ctext x='150' y='155' font-family='Playfair Display,serif' font-size='22' fill='%23C19B54' text-anchor='middle'%3E✦%3C/text%3E%3Ctext x='150' y='185' font-family='Poppins,sans-serif' font-size='12' fill='%23666' text-anchor='middle'%3EPersonalized%3C/text%3E%3C/svg%3E"
+                    alt="Personalized Journal" />
+                    <span class="badge-bestseller">Bestseller</span>
+                    <span class="wishlist-icon">♡</span>
+                    <button class="quick-view">Quick View</button>
+                </div>
+                <div class="info">
+                    <div class="title">Personalized Leather Journal</div>
+                    <div class="price"><span class="old">$49.99</span> $39.99</div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="product-card">
+                <div class="image-wrap">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23f0e6d8'/%3E%3Ctext x='150' y='155' font-family='Playfair Display,serif' font-size='28' fill='%23C19B54' text-anchor='middle'%3E♡%3C/text%3E%3Ctext x='150' y='185' font-family='Poppins,sans-serif' font-size='12' fill='%23666' text-anchor='middle'%3ECustom Couple%3C/text%3E%3C/svg%3E"
+                    alt="Couple Portrait" />
+                    <span class="badge-bestseller">Bestseller</span>
+                    <span class="wishlist-icon">♡</span>
+                    <button class="quick-view">Quick View</button>
+                </div>
+                <div class="info">
+                    <div class="title">Custom Couple Portrait</div>
+                    <div class="price">$59.99</div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="product-card">
+                <div class="image-wrap">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23dde6e0'/%3E%3Ctext x='150' y='155' font-family='Playfair Display,serif' font-size='26' fill='%23C19B54' text-anchor='middle'%3E❀%3C/text%3E%3Ctext x='150' y='185' font-family='Poppins,sans-serif' font-size='12' fill='%23666' text-anchor='middle'%3EFlower Box%3C/text%3E%3C/svg%3E"
+                    alt="Memory Flower Box" />
+                    <span class="wishlist-icon">♡</span>
+                    <button class="quick-view">Quick View</button>
+                </div>
+                <div class="info">
+                    <div class="title">Memory Flower Box</div>
+                    <div class="price">$44.99</div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="product-card">
+                <div class="image-wrap">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23e8ddd0'/%3E%3Ctext x='150' y='155' font-family='Playfair Display,serif' font-size='28' fill='%23C19B54' text-anchor='middle'%3E✧%3C/text%3E%3Ctext x='150' y='185' font-family='Poppins,sans-serif' font-size='12' fill='%23666' text-anchor='middle'%3EAnniversary%3C/text%3E%3C/svg%3E"
+                    alt="Anniversary Frame" />
+                    <span class="wishlist-icon">♡</span>
+                    <button class="quick-view">Quick View</button>
+                </div>
+                <div class="info">
+                    <div class="title">Anniversary Keepsake Frame</div>
+                    <div class="price">$34.99</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    WHAT ARE YOU CELEBRATING?
+    ============================================================ -->
+    <section class="section-categories" id="celebrations">
+        <div class="section-header celebration-header">
+            <div class="title-group">
+                <span class="section-kicker">✦ PICK YOUR MOMENT ✦</span>
+                <h2>What Are You Celebrating?</h2>
+                <p>Choose your occasion — we'll handle the perfect setup.</p>
+                <span class="decor-line"></span>
+            </div>
+        </div>
+
+        <div class="category-grid celebration-grid">
+
+            <!-- BIRTHDAY -->
+            <article class="category-card celebration-card" data-category="birthday">
+                <div class="category-visual birthday-visual">
+                    <div class="visual-decoration">🎂</div>
+                    <span class="visual-label">LET'S CELEBRATE</span>
+                </div>
+                <div class="category-content">
+                    <div class="category-title-row">
+                        <span class="category-icon">🎂</span>
+                        <div>
+                            <h3>Birthday</h3>
+                            <p>Highest everyday demand</p>
+                        </div>
+                    </div>
+                    <div class="service-list">
+                        <a href="#">Birthday Balloon Decoration</a>
+                        <a href="#">Birthday Room Decoration</a>
+                        <a href="#">Cafe Birthday Setup</a>
+                        <a href="#">Birthday Backdrop</a>
+                        <a href="#">Midnight Birthday Surprise</a>
+                        <a href="#">Theme Birthday Decoration</a>
+                    </div>
+                    <button class="category-explore" type="button">Explore Birthday <span>→</span></button>
+                </div>
+            </article>
+
+            <!-- ANNIVERSARY -->
+            <article class="category-card celebration-card" data-category="anniversary">
+                <div class="category-visual anniversary-visual">
+                    <div class="visual-decoration">❤️</div>
+                    <span class="visual-label">TOGETHER FOREVER</span>
+                </div>
+                <div class="category-content">
+                    <div class="category-title-row">
+                        <span class="category-icon">❤️</span>
+                        <div>
+                            <h3>Anniversary</h3>
+                            <p>Strong couple segment</p>
+                        </div>
+                    </div>
+                    <div class="service-list">
+                        <a href="#">Anniversary Balloon Decoration</a>
+                        <a href="#">Romantic Room Setup</a>
+                        <a href="#">Cafe Anniversary Setup</a>
+                        <a href="#">Candlelight Setup</a>
+                        <a href="#">Couple Backdrop</a>
+                        <a href="#">Surprise Anniversary Setup</a>
+                    </div>
+                    <button class="category-explore" type="button">Explore Anniversary <span>→</span></button>
+                </div>
+            </article>
+
+            <!-- ROMANTIC SURPRISES -->
+            <article class="category-card celebration-card" data-category="romantic">
+                <div class="category-visual romantic-visual">
+                    <div class="visual-decoration">💕</div>
+                    <span class="visual-label">JUST FOR YOU</span>
+                </div>
+                <div class="category-content">
+                    <div class="category-title-row">
+                        <span class="category-icon">💕</span>
+                        <div>
+                            <h3>Romantic Surprises</h3>
+                            <p>Perfect for 20–40</p>
+                        </div>
+                    </div>
+                    <div class="service-list">
+                        <a href="#">Romantic Room Setup</a>
+                        <a href="#">Date Night Setup</a>
+                        <a href="#">Midnight Surprise</a>
+                        <a href="#">Rose &amp; Balloon Setup</a>
+                        <a href="#">Romantic Backdrop</a>
+                        <a href="#">Surprise Decoration</a>
+                    </div>
+                    <button class="category-explore" type="button">Explore Surprises <span>→</span></button>
+                </div>
+            </article>
+
+            <!-- PROPOSAL -->
+            <article class="category-card celebration-card" data-category="proposal">
+                <div class="category-visual proposal-visual">
+                    <div class="visual-decoration">💍</div>
+                    <span class="visual-label">SAY YES</span>
+                </div>
+                <div class="category-content">
+                    <div class="category-title-row">
+                        <span class="category-icon">💍</span>
+                        <div>
+                            <h3>Proposal</h3>
+                            <p>High-intent service</p>
+                        </div>
+                    </div>
+                    <div class="service-list">
+                        <a href="#">Proposal Decoration</a>
+                        <a href="#">“Marry Me” Setup</a>
+                        <a href="#">Cafe Proposal</a>
+                        <a href="#">Rooftop Proposal</a>
+                        <a href="#">Ring Ceremony Setup</a>
+                        <a href="#">Romantic Proposal Backdrop</a>
+                    </div>
+                    <button class="category-explore" type="button">Explore Proposal <span>→</span></button>
+                </div>
+            </article>
+
+            <!-- CAFE CELEBRATIONS -->
+            <article class="category-card celebration-card" data-category="cafe">
+                <div class="category-visual cafe-visual">
+                    <div class="visual-decoration">☕</div>
+                    <span class="visual-label">CELEBRATE OUT</span>
+                </div>
+                <div class="category-content">
+                    <div class="category-title-row">
+                        <span class="category-icon">☕</span>
+                        <div>
+                            <h3>Cafe Celebrations</h3>
+                            <p>Your unique positioning</p>
+                        </div>
+                    </div>
+                    <div class="service-list">
+                        <a href="#">Cafe Birthday Decoration</a>
+                        <a href="#">Cafe Anniversary Decoration</a>
+                        <a href="#">Cafe Proposal Setup</a>
+                        <a href="#">Date Night Decoration</a>
+                        <a href="#">Table Decoration</a>
+                        <a href="#">Private Celebration Setup</a>
+                    </div>
+                    <button class="category-explore" type="button">Explore Cafe Setup <span>→</span></button>
+                </div>
+            </article>
+
+            <!-- CUSTOM DECORATION -->
+            <article class="category-card celebration-card" data-category="custom">
+                <div class="category-visual custom-visual">
+                    <div class="visual-decoration">🎈</div>
+                    <span class="visual-label">MAKE IT YOURS</span>
+                </div>
+                <div class="category-content">
+                    <div class="category-title-row">
+                        <span class="category-icon">🎈</span>
+                        <div>
+                            <h3>Custom Decoration</h3>
+                            <p>Captures everything else</p>
+                        </div>
+                    </div>
+                    <div class="service-list">
+                        <a href="#">Custom Balloon Decoration</a>
+                        <a href="#">Theme Decoration</a>
+                        <a href="#">Backdrop Setup</a>
+                        <a href="#">Room Decoration</a>
+                        <a href="#">Table Setup</a>
+                        <a href="#">Reference-Based Decoration</a>
+                    </div>
+                    <button class="category-explore" type="button">Customize My Setup <span>→</span></button>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- ============================================================
+    DESIGN YOUR DREAM GIFT
+    ============================================================ -->
+    <section class="section-dream-gift">
+        <div class="dream-grid container">
+            <!-- Left Copy -->
+            <div class="dream-copy">
+                <div class="overline">✦ Design Your Dream Celebration</div>
+                <h2>Create My Celebration</h2>
+                <p>
+                    Tell us your vision — we'll handcraft a one-of-a-kind
+                    celebration setup that matches your story. From planning to setup,
+                    we make your celebration stress-free.
+                </p>
+                <div class="dream-stats">
+                    <div class="stat">
+                        <span class="number">1,200+</span>
+                        <span class="sub">Happy Clients</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number">98%</span>
+                        <span class="sub">Satisfaction Rate</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number">4.9 ★</span>
+                        <span class="sub">Average Rating</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Form -->
+            <div class="dream-form-wrap">
+                <h3>Tell us about your celebration</h3>
+                <p class="form-sub">Share your idea, budget and occasion — we'll plan the setup for you.</p>
+
+                <form class="dream-form" onsubmit="event.preventDefault(); alert('Thank you! Our team will contact you within 30 minutes.');">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="e.g. Sarah Johnson" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="sarah@example.com" required />
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Celebration Type</label>
+                        <select>
+                            <option>Birthday</option>
+                            <option>Anniversary</option>
+                            <option>Wedding</option>
+                            <option>Surprise</option>
+                            <option>Corporate</option>
+                            <option>Just Because</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Celebration Date</label>
+                        <input type="date" />
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Upload Inspiration / Reference</label>
+                        <div class="file-upload-wrap">
+                            <input type="text" placeholder="No file chosen" readonly />
+                            <button type="button" class="upload-btn">Upload</button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit">✨ Create My Celebration</button>
+                    <div class="form-micro">Our team will contact you to discuss your occasion, requirements and budget.</div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    WHY CHOOSE GIFTAURA?
+    ============================================================ -->
+    <section class="section-why">
+        <div class="section-header">
+            <div></div>
+            <div class="title-group">
+                <h2>Why Choose GiftAura?</h2>
+                <span class="decor-line"></span>
+            </div>
+            <div></div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="icon">✦</div>
+                <div class="text">
+                    <div class="title">100% Handmade</div>
+                    <div class="desc">Every piece is carefully crafted by our skilled artisans.</div>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="icon">✧</div>
+                <div class="text">
+                    <div class="title">Fully Personalized</div>
+                    <div class="desc">Customize every detail to make it truly yours.</div>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="icon">◈</div>
+                <div class="text">
+                    <div class="title">Premium Quality</div>
+                    <div class="desc">We use only the finest materials for lasting beauty.</div>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="icon">❖</div>
+                <div class="text">
+                    <div class="title">Free Shipping</div>
+                    <div class="desc">Complimentary delivery on all orders worldwide.</div>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="icon">♢</div>
+                <div class="text">
+                    <div class="title">24/7 Support</div>
+                    <div class="desc">Our team is always here to help you.</div>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="icon">✦</div>
+                <div class="text">
+                    <div class="title">Hassle-Free Returns</div>
+                    <div class="desc">Love it or return it — no questions asked.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    HAPPY MEMORIES  (Testimonials)
+    ============================================================ -->
+    <section class="section-testimonials">
+        <div class="testimonial-layout">
+            <!-- Left Panel -->
+            <div class="testimonial-left">
+                <div>
+                    <h3>Happy <span>Memories</span></h3>
+                    <p class="sub">Real stories from our cherished customers</p>
+                </div>
+                <div>
+                    <div class="controls">
+                        <button aria-label="Previous">◀</button>
+                        <button aria-label="Next">▶</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Scrollable Cards -->
+            <div class="testimonial-right">
+                <div class="testimonial-card">
+                    <div class="top">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23d4c9b8'/%3E%3Ctext x='32' y='40' font-family='Poppins,sans-serif' font-size='18' fill='%23666' text-anchor='middle'%3E👤%3C/text%3E%3C/svg%3E" alt="Avatar" />
+                        <span class="quote-icon">"</span>
+                    </div>
+                    <p class="review">
+                        "The personalized journal I ordered for my best friend
+                        brought her to tears. The craftsmanship is stunning."
+                    </p>
+                    <span class="name">— Emily R.</span>
+                    <div class="stars">★★★★★</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="top">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23d4c9b8'/%3E%3Ctext x='32' y='40' font-family='Poppins,sans-serif' font-size='18' fill='%23666' text-anchor='middle'%3E👤%3C/text%3E%3C/svg%3E" alt="Avatar" />
+                        <span class="quote-icon">"</span>
+                    </div>
+                    <p class="review">
+                        "GiftAura made our anniversary unforgettable.
+                        The custom portrait now hangs in our living room."
+                    </p>
+                    <span class="name">— Michael &amp; Laura</span>
+                    <div class="stars">★★★★★</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="top">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23d4c9b8'/%3E%3Ctext x='32' y='40' font-family='Poppins,sans-serif' font-size='18' fill='%23666' text-anchor='middle'%3E👤%3C/text%3E%3C/svg%3E" alt="Avatar" />
+                        <span class="quote-icon">"</span>
+                    </div>
+                    <p class="review">
+                        "I've ordered three times now — each gift is more
+                        beautiful than the last. Absolutely love GiftAura!"
+                    </p>
+                    <span class="name">— Sophie K.</span>
+                    <div class="stars">★★★★★</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="top">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23d4c9b8'/%3E%3Ctext x='32' y='40' font-family='Poppins,sans-serif' font-size='18' fill='%23666' text-anchor='middle'%3E👤%3C/text%3E%3C/svg%3E" alt="Avatar" />
+                        <span class="quote-icon">"</span>
+                    </div>
+                    <p class="review">
+                        "The attention to detail is incredible. My wife
+                        cried when she opened her surprise gift box."
+                    </p>
+                    <span class="name">— David T.</span>
+                    <div class="stars">★★★★★</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    FAQ
+    ============================================================ -->
+    <section class="section-faq">
+        <div class="section-header">
+            <div></div>
+            <div class="title-group">
+                <h2>Frequently Asked Questions</h2>
+                <span class="decor-line"></span>
+            </div>
+            <div></div>
+        </div>
+
+        <div class="faq-grid">
+            <div class="faq-item">
+                <span class="q">How long does customization take?</span>
+                <span class="plus">+</span>
+            </div>
+            <div class="faq-item">
+                <span class="q">Do you ship internationally?</span>
+                <span class="plus">+</span>
+            </div>
+            <div class="faq-item">
+                <span class="q">Can I return a custom gift?</span>
+                <span class="plus">+</span>
+            </div>
+            <div class="faq-item">
+                <span class="q">What payment methods do you accept?</span>
+                <span class="plus">+</span>
+            </div>
+            <div class="faq-item">
+                <span class="q">How do I track my order?</span>
+                <span class="plus">+</span>
+            </div>
+            <div class="faq-item">
+                <span class="q">Do you offer corporate gifting?</span>
+                <span class="plus">+</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <!-- Col 1: Brand -->
+            <div class="footer-col">
+                <div class="brand">GiftAura<span class="star">✦</span></div>
+                <div class="tagline">MADE WITH LOVE, JUST FOR YOU</div>
+                <p style="font-size:13px; opacity:0.6; max-width:260px;">
+                    Budget-friendly event planning and balloon decoration for birthdays, anniversaries, proposals, cafe celebrations &amp; special moments.
+                </p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="Instagram">ig</a>
+                    <a href="#" aria-label="Pinterest">p</a>
+                    <a href="#" aria-label="YouTube">yt</a>
+                </div>
+            </div>
+
+            <!-- Col 2: Quick Links -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="#">About Us</a>
+                <a href="#">Our Story</a>
+                <a href="#">Careers</a>
+                <a href="#">Press &amp; Media</a>
+                <a href="#">Contact</a>
+            </div>
+
+            <!-- Col 3: Customer Service -->
+            <div class="footer-col">
+                <h4>Customer Service</h4>
+                <a href="#">Help Center</a>
+                <a href="#">Returns &amp; Exchanges</a>
+                <a href="#">Shipping Info</a>
+                <a href="#">Track My Order</a>
+                <a href="#">Gift Cards</a>
+            </div>
+
+            <!-- Col 4: Newsletter / Contact -->
+            <div class="footer-col">
+                <h4>Stay Connected</h4>
+                <p style="font-size:13px; opacity:0.6; margin-bottom:12px;">
+                    Subscribe for exclusive offers &amp; gift inspirations.
+                </p>
+                <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                    <input type="email" placeholder="Your email" style="flex:1; min-width:120px; padding:10px 14px; border-radius:6px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.04); color:#fff; font-size:13px; outline:none;" />
+                    <button style="background:var(--color-primary-gold); color:#fff; border:none; padding:10px 18px; border-radius:6px; font-weight:600; cursor:pointer; font-size:13px;">Subscribe</button>
+                </div>
+                <p style="margin-top:16px; font-size:12px; opacity:0.4;">
+                    ✦ support@giftaura.com &nbsp;|&nbsp; ✦ +1 (555) 000-9999
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2026 GiftAura. All rights reserved.</span>
+            <span>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookies</a>
+            </span>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+    MOBILE NAV TOGGLE
+    ============================================================ -->
+    <script>
+        function toggleMobileNav() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('mobile-open');
+        }
+
+        // Close mobile nav when clicking a link (optional)
+        document.querySelectorAll('#navLinks a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('mobile-open');
+            });
+        });
+    </script>
+
+</body>
+</html>

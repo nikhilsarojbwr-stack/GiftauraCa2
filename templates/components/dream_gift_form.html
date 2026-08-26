@@ -3,6 +3,7 @@
     ============================================================ -->
 <section class="section-dream-gift">
     <div class="dream-grid container">
+
         <!-- Left Copy -->
         <div class="dream-copy">
             <div class="overline">✦ Design Your Dream Gift</div>
@@ -33,41 +34,166 @@
             <h3>Tell us about your gift</h3>
             <p class="form-sub">Fill in the details and we'll bring it to life.</p>
 
-            <form class="dream-form" onsubmit="event.preventDefault(); alert('Thank you! Our team will contact you within 30 minutes.');">
+            <form class="dream-form" id="dreamGiftForm" novalidate>
                 <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" placeholder="e.g. Sarah Johnson" required />
+                    <label for="dream-full-name">Full Name</label>
+                    <input type="text" id="dream-full-name" name="full_name" placeholder="e.g. Sarah Johnson" required>
                 </div>
+
                 <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" placeholder="sarah@example.com" required />
+                    <label for="dream-email">Email Address</label>
+                    <input type="email" id="dream-email" name="email" placeholder="sarah@example.com" required>
                 </div>
+
                 <div class="form-group full-width">
-                    <label>Gift Occasion</label>
-                    <select>
-                        <option>Birthday</option>
-                        <option>Anniversary</option>
-                        <option>Wedding</option>
-                        <option>Surprise</option>
-                        <option>Corporate</option>
-                        <option>Just Because</option>
-                        <option>Other</option>
+                    <label for="dream-occasion">Gift Occasion</label>
+                    <select id="dream-occasion" name="occasion" required>
+                        <option value="">Select Occasion</option>
+                        <option value="Birthday">Birthday</option>
+                        <option value="Anniversary">Anniversary</option>
+                        <option value="Wedding">Wedding</option>
+                        <option value="Surprise">Surprise</option>
+                        <option value="Corporate">Corporate</option>
+                        <option value="Just Because">Just Because</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
+
                 <div class="form-group full-width">
-                    <label>Delivery Date</label>
-                    <input type="date" />
+                    <label for="dream-delivery-date">Delivery Date</label>
+                    <input type="date" id="dream-delivery-date" name="delivery_date">
                 </div>
+
                 <div class="form-group full-width">
-                    <label>Upload Inspiration / Reference</label>
+                    <label for="dream-reference-file">Upload Inspiration / Reference</label>
                     <div class="file-upload-wrap">
-                        <input type="text" placeholder="No file chosen" readonly />
-                        <button type="button" class="upload-btn">Upload</button>
+                        <input type="text" id="dream-file-name" placeholder="No file chosen" readonly>
+                        <input type="file" id="dream-reference-file" accept="image/*,.pdf" hidden>
+                        <button type="button" class="upload-btn" id="dream-upload-btn">Upload</button>
                     </div>
                 </div>
-                <button type="submit" class="btn-submit">✨ Submit Your Dream Gift</button>
-                <div class="form-micro">Our team will contact you within 30 minutes to discuss every detail.</div>
+
+                <button type="submit" class="btn-submit" id="dream-submit-btn">
+                    ✨ Submit Your Dream Gift
+                </button>
+
+                <div class="form-micro" id="dream-form-message" aria-live="polite">
+                    Our team will contact you within 30 minutes to discuss every detail.
+                </div>
             </form>
         </div>
     </div>
 </section>
+
+<script>
+    (function() {
+        // ---------- CONFIG ----------
+        const APPS_SCRIPT_URL =
+            "https://script.google.com/macros/s/AKfycbwK1lgB0jcIckIrqsnbRTkEZPrTFEzOE479x3trxwlSNujMnK8zzSFt0k73Zo_JZXop/exec";
+
+        // ---------- DOM REFS ----------
+        const form = document.getElementById("dreamGiftForm");
+        const fullName = document.getElementById("dream-full-name");
+        const email = document.getElementById("dream-email");
+        const occasion = document.getElementById("dream-occasion");
+        const deliveryDate = document.getElementById("dream-delivery-date");
+        const fileInput = document.getElementById("dream-reference-file");
+        const fileNameDisplay = document.getElementById("dream-file-name");
+        const uploadBtn = document.getElementById("dream-upload-btn");
+        const submitBtn = document.getElementById("dream-submit-btn");
+        const messageEl = document.getElementById("dream-form-message");
+
+        // ---------- FILE INPUT HANDLER ----------
+        uploadBtn.addEventListener("click", function() {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener("change", function() {
+            fileNameDisplay.value = this.files.length ? this.files[0].name : "No file chosen";
+        });
+
+        // ---------- HELPER: File → Base64 ----------
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = () => reject(new Error("Failed to read file."));
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // ---------- FORM SUBMIT ----------
+        form.addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = "Submitting…";
+            messageEl.textContent = "Please wait while we submit your request…";
+            messageEl.style.color = "";
+            messageEl.style.fontWeight = "normal";
+
+            try {
+                // Basic validation (already required by HTML, but double‑check)
+                if (!fullName.value.trim() || !email.value.trim() || !occasion.value) {
+                    throw new Error("Please fill in all required fields.");
+                }
+
+                // Build payload
+                const payload = {
+                    full_name: fullName.value.trim(),
+                    email: email.value.trim(),
+                    occasion: occasion.value,
+                    delivery_date: deliveryDate.value || "",
+                    reference: null
+                };
+
+                // Handle file upload (if any)
+                if (fileInput.files.length > 0) {
+                    const file = fileInput.files[0];
+                    const maxSize = 5 * 1024 * 1024; // 5 MB
+                    if (file.size > maxSize) {
+                        throw new Error("Please upload a file smaller than 5 MB.");
+                    }
+                    payload.reference = {
+                        name: file.name,
+                        type: file.type,
+                        base64: await fileToBase64(file)
+                    };
+                }
+
+                // Send to Google Apps Script
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: "POST",
+                    mode: "no-cors", // because Apps Script doesn't support CORS easily
+                    headers: {
+                        "Content-Type": "text/plain;charset=utf-8"
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                // With no-cors we cannot read response, so we assume success.
+                // If you deploy with CORS enabled, you can parse response.json().
+                // For now, show success message.
+                messageEl.textContent =
+                    "✓ Thank you! Your request has been received. Our team will contact you within 30 minutes.";
+                messageEl.style.color = "#24734e";
+                messageEl.style.fontWeight = "500";
+
+                // Reset form (except message)
+                form.reset();
+                fileNameDisplay.value = "No file chosen";
+
+            } catch (error) {
+                console.error("Dream Gift Error:", error);
+                messageEl.textContent = error.message || "Something went wrong. Please try again.";
+                messageEl.style.color = "#b42318";
+                messageEl.style.fontWeight = "500";
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = "✨ Submit Your Dream Gift";
+            }
+        });
+
+    })();
+</script>

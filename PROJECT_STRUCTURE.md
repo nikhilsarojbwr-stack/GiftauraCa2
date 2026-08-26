@@ -2,7 +2,7 @@
 
 Automatically Generated
 
-Generated On: 2026-08-20 12:00:40
+Generated On: 2026-08-25 16:22:55
 
 ---
 
@@ -41,9 +41,51 @@ Gift
 │   │   └── style.css
 │   ├── images
 │   │   ├── products
+│   │   │   ├── c2210b5eee67419f832f36d05c65cbe4.png
+│   │   │   └── eeab65696fd049be883c7698778d1afa.png
 │   │   ├── banner.png
 │   │   └── Gemini_Generated_Image_tgdnhltgdnhltgdn.png
 │   └── js
+├── templates
+│   ├── about
+│   │   └── about.html
+│   ├── admin
+│   │   ├── add_product.html
+│   │   ├── dashboard.html
+│   │   ├── edit_product.html
+│   │   ├── login.html
+│   │   └── products.html
+│   ├── auth
+│   │   ├── login.html
+│   │   └── register.html
+│   ├── components
+│   │   ├── best_sellers_section.html
+│   │   ├── breadcrumb.html
+│   │   ├── category_section.html
+│   │   ├── dream_gift_form.html
+│   │   ├── faq.html
+│   │   ├── feature_card.html
+│   │   ├── hero.html
+│   │   ├── newsletter.html
+│   │   ├── occasion_section.html
+│   │   ├── pagination.html
+│   │   ├── product_card.html
+│   │   ├── search_bar.html
+│   │   ├── testimonials_section.html
+│   │   ├── trust_bar.html
+│   │   └── why_choose.html
+│   ├── contact
+│   │   └── contact.html
+│   ├── home
+│   │   └── index.html
+│   ├── product
+│   │   └── product_details.html
+│   ├── shared
+│   │   ├── base.html
+│   │   ├── footer.html
+│   │   └── navbar.html
+│   └── shop
+│       └── shop.html
 ├── .gitignore
 ├── a.py
 ├── adminflow.md
@@ -53,6 +95,7 @@ Gift
 ├── flow.md
 ├── main.py
 ├── PROJECT_STRUCTURE.md
+├── push_giftaura.bat
 ├── qr.py
 ├── README.md
 └── requirements.txt
@@ -60,7 +103,6 @@ Gift
 
 ## Statistics
 
-- Folders: 10
-- Files: 36
+- Folders: 20
+- Files: 69
 - Python files: 26
-(.venv) PS D:\Gift> https://github.com/nikhilsarojbwr-stack/GiftauraCa2

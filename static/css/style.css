@@ -543,61 +543,944 @@
             border-color: var(--color-primary-gold);
         }
 
-        /* ============================================================
-                   5.  SHOP BY CATEGORY  (Portrait Arches)
-                   ============================================================ */
-        .section-categories {
-            padding: var(--section-spacing);
-            background: var(--color-body-bg);
-        }
+/* ============================================================
+   WHAT ARE YOU CELEBRATING?
+   CATEGORY SECTION
+   ============================================================ */
 
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 15px;
-            margin-top: 10px;
-        }
+.section-categories {
+    width: 100%;
+    padding: 75px 4.5% 55px;
+    background: #fffdf9;
+    font-family: var(--font-sans);
+    overflow: hidden;
+}
 
-        .category-card {
-            border-radius: var(--radius-category);
-            overflow: hidden;
-            position: relative;
-            aspect-ratio: 3/4;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .category-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
-        }
-        .category-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .category-card .overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 60%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            padding: 16px 8px;
-            text-align: center;
-        }
-        .category-card .overlay .icon {
-            font-size: 24px;
-            color: var(--color-primary-gold);
-            margin-bottom: 4px;
-        }
-        .category-card .overlay .label {
-            color: var(--color-white);
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-        }
 
+/* ============================================================
+   SECTION HEADER
+   ============================================================ */
+
+.section-categories .celebration-header {
+    display: block;
+    text-align: center;
+    margin-bottom: 38px;
+}
+
+.section-categories .celebration-header .title-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-categories .celebration-header .section-kicker {
+    display: none;
+}
+
+.section-categories .celebration-header h2 {
+    position: relative;
+
+    margin: 0;
+
+    color: #10261d;
+
+    font-family: var(--font-serif);
+    font-size: clamp(42px, 5vw, 70px);
+    font-weight: 600;
+    line-height: 1.05;
+
+    letter-spacing: -1.5px;
+    text-transform: uppercase;
+}
+
+
+/* Left decorative heart */
+
+.section-categories .celebration-header h2::before {
+    content: "♡";
+
+    position: absolute;
+    left: -58px;
+    top: -18px;
+
+    color: #d99220;
+
+    font-family: Arial, sans-serif;
+    font-size: 42px;
+    font-weight: 300;
+
+    line-height: 1;
+}
+
+
+/* Right decorative heart */
+
+.section-categories .celebration-header h2::after {
+    content: "♡";
+
+    position: absolute;
+    right: -58px;
+    top: -18px;
+
+    color: #d99220;
+
+    font-family: Arial, sans-serif;
+    font-size: 42px;
+    font-weight: 300;
+
+    line-height: 1;
+}
+
+
+.section-categories .celebration-header p {
+    margin: 12px 0 8px;
+
+    color: #222b27;
+
+    font-family: var(--font-sans);
+    font-size: 17px;
+    font-weight: 400;
+}
+
+
+.section-categories .celebration-header .decor-line {
+    display: block;
+
+    width: 180px;
+    height: 3px;
+
+    margin-top: 2px;
+
+    background: #d99220;
+
+    border-radius: 100%;
+
+    transform: rotate(-3deg);
+}
+
+
+/* ============================================================
+   CATEGORY GRID
+   ============================================================ */
+
+.section-categories .celebration-grid {
+    width: 100%;
+    max-width: 1450px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 28px 30px;
+}
+
+
+/* ============================================================
+   CATEGORY CARD
+   ============================================================ */
+
+.section-categories .celebration-card {
+    position: relative;
+
+    min-width: 0;
+
+    background: transparent;
+
+    border: none;
+    border-radius: 22px;
+
+    overflow: visible;
+
+    box-shadow: none;
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+
+.section-categories .celebration-card:hover {
+    transform: translateY(-5px);
+}
+
+
+/* ============================================================
+   CATEGORY IMAGE
+   ============================================================ */
+
+.section-categories .celebration-card .category-visual {
+    position: relative;
+
+    width: 100%;
+    height: 325px;
+
+    padding: 0;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    display: block;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    box-shadow:
+        0 5px 18px rgba(45, 35, 25, 0.13);
+
+    isolation: isolate;
+}
+
+
+/* Dark/light image overlay */
+
+.section-categories .celebration-card .category-visual::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.02) 0%,
+            rgba(0, 0, 0, 0.04) 50%,
+            rgba(0, 0, 0, 0.16) 100%
+        );
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* ============================================================
+   CELEBRATION IMAGES
+   ============================================================ */
+
+/*
+   Put your six images inside:
+
+   static/images/celebrations/
+
+   Files:
+
+   birthday.jpg
+   anniversary.jpg
+   romantic.jpg
+   proposal.jpg
+   cafe.jpg
+   custom.jpg
+*/
+
+
+.section-categories .birthday-visual {
+    background-image:
+        url("/static/images/celebrations/birthday.jpg");
+}
+
+
+.section-categories .anniversary-visual {
+    background-image:
+        url("/static/images/celebrations/anniversary.jpg");
+}
+
+
+.section-categories .romantic-visual {
+    background-image:
+        url("/static/images/celebrations/romantic.jpg");
+}
+
+
+.section-categories .proposal-visual {
+    background-image:
+        url("/static/images/celebrations/proposal.jpg");
+}
+
+
+.section-categories .cafe-visual {
+    background-image:
+        url("/static/images/celebrations/cafe.jpg");
+}
+
+
+.section-categories .custom-visual {
+    background-image:
+        url("/static/images/celebrations/custom.jpg");
+}
+
+
+/* ============================================================
+   REMOVE OLD EMOJI / LABEL
+   ============================================================ */
+
+.section-categories .celebration-card .visual-decoration,
+.section-categories .celebration-card .visual-label {
+    display: none;
+}
+
+
+/* ============================================================
+   WHITE CONTENT PANEL
+   ============================================================ */
+
+.section-categories .celebration-card .category-content {
+    position: relative;
+
+    width: calc(100% - 4px);
+
+    min-height: 120px;
+
+    margin: -22px auto 0;
+
+    padding: 17px 18px 12px 112px;
+
+    background: rgba(255, 255, 255, 0.98);
+
+    border-radius: 0 0 22px 22px;
+
+    box-shadow:
+        0 5px 16px rgba(45, 35, 25, 0.09);
+
+    z-index: 5;
+
+    display: block;
+}
+
+
+/* ============================================================
+   CATEGORY TITLE
+   ============================================================ */
+
+.section-categories .celebration-card .category-title-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: 0;
+
+    margin: 0;
+
+    min-height: 58px;
+}
+
+
+.section-categories .celebration-card .category-title-row > div {
+    min-width: 0;
+}
+
+
+.section-categories .celebration-card .category-title-row h3 {
+    margin: 0 0 3px;
+
+    color: #10261d;
+
+    font-family: var(--font-serif);
+
+    font-size: clamp(24px, 2vw, 31px);
+
+    font-weight: 600;
+
+    line-height: 1.05;
+}
+
+
+.section-categories .celebration-card .category-title-row p {
+    margin: 0;
+
+    color: #29342f;
+
+    font-family: var(--font-sans);
+
+    font-size: 14px;
+
+    line-height: 1.35;
+}
+
+
+/* ============================================================
+   ROUND CATEGORY ICON
+   ============================================================ */
+
+.section-categories .celebration-card .category-icon {
+    position: absolute;
+
+    left: 17px;
+    top: -34px;
+
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 3px solid #fff;
+
+    border-radius: 50%;
+
+    color: #fff;
+
+    font-size: 34px;
+
+    line-height: 1;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.14);
+
+    z-index: 10;
+}
+
+
+/* Birthday */
+
+.section-categories
+.celebration-card[data-category="birthday"]
+.category-icon {
+    background: #f4878c;
+}
+
+
+/* Anniversary */
+
+.section-categories
+.celebration-card[data-category="anniversary"]
+.category-icon {
+    background: #df2537;
+}
+
+
+/* Romantic */
+
+.section-categories
+.celebration-card[data-category="romantic"]
+.category-icon {
+    background: #ed4c73;
+}
+
+
+/* Proposal */
+
+.section-categories
+.celebration-card[data-category="proposal"]
+.category-icon {
+    background: #8150b4;
+}
+
+
+/* Cafe */
+
+.section-categories
+.celebration-card[data-category="cafe"]
+.category-icon {
+    background: #b87938;
+}
+
+
+/* Custom */
+
+.section-categories
+.celebration-card[data-category="custom"]
+.category-icon {
+    background: #26726e;
+}
+
+
+/* ============================================================
+   SERVICE LIST
+   ============================================================ */
+
+/*
+   The reference design does NOT show the six service links.
+
+   We hide them visually but keep them in the HTML.
+   This means you don't lose the existing content.
+*/
+
+.section-categories .celebration-card .service-list {
+    display: none;
+}
+
+
+/* ============================================================
+   EXPLORE BUTTON
+   ============================================================ */
+
+.section-categories .celebration-card .category-explore {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 8px;
+
+    padding: 8px 20px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    color: #fff;
+
+    font-family: var(--font-sans);
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+
+.section-categories
+.celebration-card
+.category-explore span {
+    display: inline-block;
+
+    font-size: 19px;
+
+    line-height: 12px;
+
+    transition: transform 0.2s ease;
+}
+
+
+.section-categories
+.celebration-card
+.category-explore:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.05);
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.14);
+}
+
+
+.section-categories
+.celebration-card
+.category-explore:hover span {
+    transform: translateX(4px);
+}
+
+
+/* Birthday CTA */
+
+.section-categories
+.celebration-card[data-category="birthday"]
+.category-explore {
+    background: #f4777e;
+}
+
+
+/* Anniversary CTA */
+
+.section-categories
+.celebration-card[data-category="anniversary"]
+.category-explore {
+    background: #d7192b;
+}
+
+
+/* Romantic CTA */
+
+.section-categories
+.celebration-card[data-category="romantic"]
+.category-explore {
+    background: #ed5273;
+}
+
+
+/* Proposal CTA */
+
+.section-categories
+.celebration-card[data-category="proposal"]
+.category-explore {
+    background: #844eb5;
+}
+
+
+/* Cafe CTA */
+
+.section-categories
+.celebration-card[data-category="cafe"]
+.category-explore {
+    background: #b87531;
+}
+
+
+/* Custom CTA */
+
+.section-categories
+.celebration-card[data-category="custom"]
+.category-explore {
+    background: #1d6965;
+}
+
+
+/* ============================================================
+   TRUST BAR
+   ============================================================ */
+
+.section-categories .celebration-trust-bar {
+    width: 100%;
+    max-width: 1400px;
+
+    margin: 30px auto 0;
+
+    padding: 18px 22px;
+
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    background: #fff;
+
+    border: 1px solid #eadfd2;
+
+    border-radius: 40px;
+
+    box-shadow:
+        0 4px 15px rgba(45, 35, 25, 0.06);
+}
+
+
+.section-categories .celebration-trust-item {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 6px 20px;
+}
+
+
+.section-categories
+.celebration-trust-item:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+
+    top: 10%;
+
+    width: 1px;
+
+    height: 80%;
+
+    background: #ead7c1;
+}
+
+
+.section-categories .celebration-trust-icon {
+    flex: 0 0 auto;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #18251f;
+
+    font-size: 28px;
+}
+
+
+.section-categories .celebration-trust-item h4 {
+    margin: 0 0 2px;
+
+    color: #202621;
+
+    font-family: var(--font-sans);
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.section-categories .celebration-trust-item p {
+    margin: 0;
+
+    color: #343a36;
+
+    font-family: var(--font-sans);
+
+    font-size: 11px;
+
+    line-height: 1.35;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 1100px) {
+
+    .section-categories {
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+
+    .section-categories .celebration-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+    }
+
+    .section-categories .celebration-card .category-visual {
+        height: 275px;
+    }
+
+    .section-categories .celebration-card .category-content {
+        padding-left: 96px;
+    }
+
+    .section-categories .celebration-card .category-icon {
+        width: 70px;
+        height: 70px;
+
+        left: 14px;
+        top: -30px;
+
+        font-size: 30px;
+    }
+
+    .section-categories .celebration-card .category-title-row h3 {
+        font-size: 24px;
+    }
+
+    .section-categories .celebration-trust-bar {
+        grid-template-columns: repeat(3, 1fr);
+
+        border-radius: 28px;
+    }
+
+    .section-categories .celebration-trust-item {
+        padding: 10px 15px;
+    }
+
+    .section-categories
+    .celebration-trust-item:nth-child(3)::after {
+        display: none;
+    }
+}
+
+
+/* ============================================================
+   TABLET / SMALL LAPTOP
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+    .section-categories .celebration-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .section-categories .celebration-card .category-visual {
+        height: 290px;
+    }
+
+    .section-categories .celebration-trust-bar {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section-categories
+    .celebration-trust-item:nth-child(2)::after,
+    .section-categories
+    .celebration-trust-item:nth-child(4)::after {
+        display: none;
+    }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+    .section-categories {
+        padding: 55px 16px 45px;
+    }
+
+    .section-categories .celebration-header {
+        margin-bottom: 30px;
+    }
+
+    .section-categories .celebration-header h2 {
+        font-size: clamp(32px, 9vw, 46px);
+
+        letter-spacing: -0.8px;
+    }
+
+    .section-categories .celebration-header h2::before {
+        left: -30px;
+        top: -9px;
+
+        font-size: 25px;
+    }
+
+    .section-categories .celebration-header h2::after {
+        right: -30px;
+        top: -9px;
+
+        font-size: 25px;
+    }
+
+    .section-categories .celebration-header p {
+        max-width: 340px;
+
+        font-size: 14px;
+    }
+
+    .section-categories .celebration-grid {
+        grid-template-columns: 1fr;
+
+        gap: 28px;
+    }
+
+    .section-categories .celebration-card .category-visual {
+        height: 300px;
+
+        border-radius: 20px;
+    }
+
+    .section-categories .celebration-card .category-content {
+        min-height: 118px;
+
+        margin-top: -22px;
+
+        padding: 16px 16px 12px 94px;
+
+        border-radius: 0 0 20px 20px;
+    }
+
+    .section-categories .celebration-card .category-icon {
+        width: 70px;
+        height: 70px;
+
+        left: 13px;
+        top: -30px;
+
+        font-size: 29px;
+    }
+
+    .section-categories .celebration-card .category-title-row h3 {
+        font-size: 25px;
+    }
+
+    .section-categories .celebration-card .category-title-row p {
+        font-size: 13px;
+    }
+
+    .section-categories .celebration-card .category-explore {
+        font-size: 13px;
+
+        padding: 8px 17px;
+    }
+
+    .section-categories .celebration-trust-bar {
+        grid-template-columns: 1fr;
+
+        padding: 10px 18px;
+
+        border-radius: 22px;
+    }
+
+    .section-categories .celebration-trust-item {
+        padding: 14px 5px;
+    }
+
+    .section-categories
+    .celebration-trust-item::after {
+        top: auto !important;
+        right: 5% !important;
+        bottom: 0;
+
+        width: 90% !important;
+        height: 1px !important;
+    }
+
+    .section-categories
+    .celebration-trust-item:last-child::after {
+        display: none;
+    }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 420px) {
+
+    .section-categories {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .section-categories .celebration-header h2 {
+        font-size: 32px;
+    }
+
+    .section-categories .celebration-header h2::before {
+        left: -23px;
+        font-size: 21px;
+    }
+
+    .section-categories .celebration-header h2::after {
+        right: -23px;
+        font-size: 21px;
+    }
+
+    .section-categories .celebration-card .category-visual {
+        height: 260px;
+    }
+
+    .section-categories .celebration-card .category-content {
+        padding-left: 83px;
+    }
+
+    .section-categories .celebration-card .category-icon {
+        width: 62px;
+        height: 62px;
+
+        left: 12px;
+        top: -27px;
+
+        font-size: 26px;
+    }
+
+    .section-categories .celebration-card .category-title-row h3 {
+        font-size: 22px;
+    }
+
+    .section-categories .celebration-card .category-title-row p {
+        font-size: 12px;
+    }
+}
         /* ============================================================
                    6.  SHOP BY OCCASION  (Floating Images)
                    ============================================================ */

@@ -3,11 +3,13 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.middleware.sessions import SessionMiddleware
-
+from routes.dream_gift_routes import router as dream_gift_router
 from routes.auth_routes import router as auth_router
 from routes.admin_routes import router as admin_router
 from routes.product_routes import admin_router as admin_product_router
-from routes.product_routes import shop_router   # import the new shop router
+from routes.product_routes import shop_router
+from dotenv import load_dotenv
+load_dotenv()   # loads variables from .env   # import the new shop router
 
 
 app = FastAPI(title="GiftAura+")
@@ -38,6 +40,7 @@ templates = Jinja2Templates(directory="templates")
 
 # Include routers
 app.include_router(auth_router)          # /auth (login, register)
+app.include_router(dream_gift_router)    # /api/dream-gift
 app.include_router(admin_router)         # /admin (login, dashboard)
 app.include_router(admin_product_router) # /admin/products (CRUD)
 app.include_router(shop_router)          # /shop (public listing & details)
