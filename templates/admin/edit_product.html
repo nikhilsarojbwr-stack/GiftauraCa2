@@ -161,23 +161,23 @@
        PRICE
        ===================================================== */
 
-    .price-input-wrapper {
-        position: relative;
-    }
+.price-input-wrapper {
+    position: relative;
+}
 
-    .price-symbol {
-        position: absolute;
-        left: 14px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #777;
-        font-weight: 600;
-    }
+.price-symbol {
+    position: absolute;
+    left: 12px;                     /* fine-tune this to your symbol */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+    font-weight: 600;
+    pointer-events: none;           /* optional: stops clicks on symbol */
+}
 
-    .price-input {
-        padding-left: 35px;
-    }
-
+.price-input {
+    padding-left: 50px !important;  /* ← BIG change: give enough room */
+}
     /* =====================================================
        CATEGORY
        ===================================================== */

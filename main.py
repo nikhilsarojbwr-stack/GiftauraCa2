@@ -3,12 +3,14 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.middleware.sessions import SessionMiddleware
-from routes.dream_gift_routes import router as dream_gift_router
+from fastapi import FastAPI, Request, HTTPException
 from routes.auth_routes import router as auth_router
 from routes.admin_routes import router as admin_router
 from routes.product_routes import admin_router as admin_product_router
 from routes.product_routes import shop_router
 from dotenv import load_dotenv
+from pathlib import Path
+import json
 load_dotenv()   # loads variables from .env   # import the new shop router
 
 
@@ -40,7 +42,7 @@ templates = Jinja2Templates(directory="templates")
 
 # Include routers
 app.include_router(auth_router)          # /auth (login, register)
-app.include_router(dream_gift_router)    # /api/dream-gift
+   # /api/dream-gift
 app.include_router(admin_router)         # /admin (login, dashboard)
 app.include_router(admin_product_router) # /admin/products (CRUD)
 app.include_router(shop_router)          # /shop (public listing & details)
@@ -58,3 +60,35 @@ async def about(request: Request):
 @app.get("/contact", response_class=HTMLResponse)
 async def contact(request: Request):
     return templates.TemplateResponse(request=request, name="contact/contact.html")
+
+
+
+# =====================================================
+# Load Category Data from JSON
+# =====================================================
+
+DATA_DIR = Path(__file__).parent / "data"
+CATEGORIES_FILE = DATA_DIR / "categories.json"
+
+def load_categories():
+    if not CATEGORIES_FILE.exists():
+        return {}
+    with open(CATEGORIES_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+CATEGORIES = load_categories()
+
+# =====================================================
+# Category Detail Page (dynamic)
+# =====================================================
+
+@app.get("/category/{slug}", response_class=HTMLResponse)
+async def category_detail(request: Request, slug: str):
+    category = CATEGORIES.get(slug)
+    if not category:
+        raise HTTPException(status_code=404, detail="Category not found")
+    return templates.TemplateResponse(
+        request=request,
+        name="category/category_detail.html",
+        context={"request": request, "category": category, "slug": slug}
+    )

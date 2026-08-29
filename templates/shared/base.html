@@ -12,8 +12,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet" />
 
     <!-- Main Styles -->
+   
     <link rel="stylesheet" href="/static/css/style.css" />
+    {% block extra_head %}{% endblock %}
     <!-- or use a relative path: /static/css/style.css -->
+
+<head>
+    <!-- ... existing meta tags ... -->
+
+    <!-- ===== FORCE NO CACHE ===== -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <!-- ===== RELOAD PAGE WHEN RESTORED FROM BFCACHE ===== -->
+    <script>
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                window.location.reload();
+            }
+        });
+    </script>
+
+    <!-- ... rest of head ... -->
+</head>
+
 </head>
 <body>
 

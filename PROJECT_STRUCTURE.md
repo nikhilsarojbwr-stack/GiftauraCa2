@@ -2,7 +2,7 @@
 
 Automatically Generated
 
-Generated On: 2026-08-25 16:22:55
+Generated On: 2026-08-26 11:56:58
 
 ---
 
@@ -40,11 +40,16 @@ Gift
 │   ├── css
 │   │   └── style.css
 │   ├── images
-│   │   ├── products
-│   │   │   ├── c2210b5eee67419f832f36d05c65cbe4.png
-│   │   │   └── eeab65696fd049be883c7698778d1afa.png
-│   │   ├── banner.png
-│   │   └── Gemini_Generated_Image_tgdnhltgdnhltgdn.png
+│   │   ├── celebrations
+│   │   │   ├── anniversary.jpg
+│   │   │   ├── birthday.jpg
+│   │   │   ├── cafe.jpg
+│   │   │   ├── custom.jpg
+│   │   │   ├── proposal.jpg
+│   │   │   └── romantic.jpg
+│   │   └── products
+│   │       ├── c2210b5eee67419f832f36d05c65cbe4.png
+│   │       └── eeab65696fd049be883c7698778d1afa.png
 │   └── js
 ├── templates
 │   ├── about
@@ -93,6 +98,7 @@ Gift
 ├── dev_tools.py
 ├── file.py
 ├── flow.md
+├── GiftAura_Full_Homepage_Celebration_Categories.html
 ├── main.py
 ├── PROJECT_STRUCTURE.md
 ├── push_giftaura.bat
@@ -103,6 +109,6 @@ Gift
 
 ## Statistics
 
-- Folders: 20
-- Files: 69
+- Folders: 21
+- Files: 74
 - Python files: 26

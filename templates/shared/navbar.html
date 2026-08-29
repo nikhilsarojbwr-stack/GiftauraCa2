@@ -18,6 +18,10 @@
         <a href="/shop">Products <span class="dropdown-arrow">▾</span></a>
         <a href="/about">About Us</a>
         <a href="/contact">Contact</a>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+        <a href="/admin/login">Admin</a>
+    </nav>
 
         <!-- ================================================
              AUTHENTICATION + ADMIN
@@ -34,12 +38,11 @@
             <span class="user-welcome">Welcome, {{ request.session.get("user_name") }}</span>
             <a href="/logout" class="logout-link">Logout</a>
         {% else %}
-            <!-- Guest -->
-            <a href="/login">Login</a>
-            <a href="/register">Sign Up</a>
+            
         {% endif %}
     </nav>
 
+  
     <!-- HEADER ACTIONS (Search, Wishlist, Cart) -->
     <div class="header-actions">
         <div class="search-bar">

@@ -1,0 +1,382 @@
+{
+  "birthday": {
+    "title": "Birthday",
+    "hero_text": "Happy Birthday! Make every birthday magical with our stunning settings. From intimate gatherings to grand parties, we bring your vision to life.",
+    "image": "/static/images/celebrations/birthday.jpg",
+    "services": [
+      "Balloon Decor",
+      "Room Setup",
+      "Cafe & Outdoor",
+      "Photo Booth",
+      "Lighting & Sound",
+      "Custom Backdrops"
+    ],
+    "trust_items": [
+      { "icon": "💰", "title": "Budget Friendly", "desc": "Options for every budget" },
+      { "icon": "⏰", "title": "On‑Time Setup", "desc": "We respect your celebration" },
+      { "icon": "🎨", "title": "Creative Decorators", "desc": "Professional setup team" },
+      { "icon": "✨", "title": "Custom Designs", "desc": "Made around your vision" }
+    ],
+    "sub_categories": [
+      { "name": "Balloon Decor", "description": "Colorful balloons, arches, and custom balloon sculptures." },
+      { "name": "Room Setup", "description": "Complete room transformation with drapes, lights, and props." },
+      { "name": "Cafe & Outdoor", "description": "Cafe birthday setups with flower walls and photo booths." }
+    ],
+    "more_styles": [
+      { "name": "Intimate Celebrations", "desc": "Perfect for small gatherings with elegant decor." },
+      { "name": "Themed Parties", "desc": "From superheroes to princess themes, we create magic." },
+      { "name": "Luxury Celebrations", "desc": "Grand setups for unforgettable birthdays." }
+    ],
+    "pricing": {
+      "starting_at": "₹4,999",
+      "includes": [
+        "Balloon arches & columns",
+        "Lighting setup",
+        "Table centerpieces",
+        "Candle table decor",
+        "Backdrop design",
+        "Complete setup & teardown"
+      ]
+    },
+    "feature_details": [
+      { "icon": "⏰", "title": "On‑time setup & teardown", "desc": "We arrive early and ensure everything is perfect." },
+      { "icon": "🌺", "title": "Free flowers & premium balloons", "desc": "High‑quality materials for a beautiful look." },
+      { "icon": "👥", "title": "Team of creative decorators", "desc": "Experienced professionals who love what they do." }
+    ],
+    "gallery": [
+      "/static/images/celebrations/birthday-gallery1.jpg",
+      "/static/images/celebrations/birthday-gallery2.jpg",
+      "/static/images/celebrations/birthday-gallery3.jpg"
+    ],
+    "testimonials": [
+      { "name": "Priya & Family", "review": "The birthday decor was stunning! The team arrived early and everything was perfect.", "rating": 5 }
+    ],
+    "faqs": [
+      { "q": "How far in advance should I book?", "a": "We recommend at least 2 weeks in advance, but we can accommodate last‑minute requests." },
+      { "q": "Do you provide catering?", "a": "We focus on decoration, but we can recommend trusted catering partners." },
+      { "q": "Can I customize the decoration?", "a": "Absolutely! Every setup is tailored to your vision." },
+      { "q": "What areas do you serve?", "a": "We serve all major cities and surrounding areas." }
+    ],
+    "cta": {
+      "title": "Planning a Birthday?",
+      "subtitle": "Tell us what you have in mind and we’ll help you create a celebration you’ll remember.",
+      "button_text": "Get a Custom Quote",
+      "button_link": "/contact"
+    }
+  },
+
+  "anniversary": {
+    "title": "Anniversary",
+    "hero_text": "Celebrate your love story with our romantic decorations – from intimate dinners to grand anniversary parties.",
+    "image": "/static/images/celebrations/anniversary.jpg",
+    "services": [
+      "Romantic Dinner Setup",
+      "Surprise Decoration",
+      "Candlelight Arrangement",
+      "Photo Collage Display",
+      "Balloon Arch",
+      "Personalised Love Quotes"
+    ],
+    "trust_items": [
+      { "icon": "💖", "title": "Romantic Ambience", "desc": "Every detail designed for love" },
+      { "icon": "⏰", "title": "On‑Time Setup", "desc": "We respect your celebration" },
+      { "icon": "🎨", "title": "Creative Decorators", "desc": "Professional setup team" },
+      { "icon": "✨", "title": "Custom Designs", "desc": "Personalised to your love story" }
+    ],
+    "sub_categories": [
+      { "name": "Romantic Dinners", "description": "Elegant table settings with candles, flowers, and soft lighting." },
+      { "name": "Surprise Setups", "description": "Hidden surprises, photo frames, and love letters decoration." },
+      { "name": "Cafe Anniversary", "description": "Transform a cafe into a romantic getaway for two." }
+    ],
+    "more_styles": [
+      { "name": "Intimate Dinners", "desc": "Cosy setups for just the two of you." },
+      { "name": "Grand Celebrations", "desc": "Lavish decor for milestone anniversaries." },
+      { "name": "Surprise Parties", "desc": "Organise a secret party for your partner." }
+    ],
+    "pricing": {
+      "starting_at": "₹6,999",
+      "includes": [
+        "Rose petal arrangements",
+        "Candlelight setup",
+        "Romantic backdrop",
+        "Dinner table decor",
+        "Surprise elements"
+      ]
+    },
+    "feature_details": [
+      { "icon": "🌹", "title": "Premium floral arrangements", "desc": "Fresh roses and seasonal flowers." },
+      { "icon": "📸", "title": "Memory photo collages", "desc": "Showcase your journey together." },
+      { "icon": "🎵", "title": "Soft music & lighting", "desc": "Perfect ambience for romance." }
+    ],
+    "gallery": [
+      "/static/images/celebrations/anniversary-gallery1.jpg",
+      "/static/images/celebrations/anniversary-gallery2.jpg",
+      "/static/images/celebrations/anniversary-gallery3.jpg"
+    ],
+    "testimonials": [
+      { "name": "Amit & Sneha", "review": "Our 10th anniversary was magical! The decor was beyond our expectations.", "rating": 5 }
+    ],
+    "faqs": [
+      { "q": "Can you customise the colour theme?", "a": "Absolutely! We adapt colours to your preference – red, gold, white, or any theme." },
+      { "q": "Do you include a photographer?", "a": "We can recommend trusted photographers at an additional cost." }
+    ],
+    "cta": {
+      "title": "Planning an Anniversary?",
+      "subtitle": "Let us help you celebrate your love story with a beautiful setup.",
+      "button_text": "Get a Custom Quote",
+      "button_link": "/contact"
+    }
+  },
+
+  "romantic": {
+    "title": "Romantic Surprises",
+    "hero_text": "Surprise your loved one with a beautifully decorated setting – perfect for dates, anniversaries, or spontaneous romance.",
+    "image": "/static/images/celebrations/romantic.jpg",
+    "services": [
+      "Rose Petal Decor",
+      "Candlelight Setup",
+      "Fairy Light Installations",
+      "Personalised Message Board",
+      "Balloon Heart Arch",
+      "Surprise Gift Box Display"
+    ],
+    "trust_items": [
+      { "icon": "💕", "title": "Heartfelt Surprises", "desc": "Every detail filled with love" },
+      { "icon": "⏰", "title": "Punctual Setup", "desc": "We arrive before your partner" },
+      { "icon": "🎨", "title": "Creative Designs", "desc": "Unique setups for every couple" },
+      { "icon": "🤫", "title": "Secret Planning", "desc": "We keep your surprise confidential" }
+    ],
+    "sub_categories": [
+      { "name": "Date Night Setup", "description": "Cosy dinner setups with mood lighting and a romantic ambience." },
+      { "name": "Midnight Surprise", "description": "Late‑night setups with fairy lights and a dramatic reveal." },
+      { "name": "Rose & Balloon", "description": "Classic combination of roses and heart‑shaped balloons." }
+    ],
+    "more_styles": [
+      { "name": "Candlelight Dinners", "desc": "Intimate setups with candles and soft music." },
+      { "name": "Proposal‑style Surprises", "desc": "Romantic decor perfect for popping the question." },
+      { "name": "Travel‑theme Setups", "desc": "Decor inspired by your favourite destinations." }
+    ],
+    "pricing": {
+      "starting_at": "₹5,499",
+      "includes": [
+        "Rose petals & candles",
+        "Photo collage",
+        "Surprise box",
+        "Balloon arch",
+        "Personalised message board"
+      ]
+    },
+    "feature_details": [
+      { "icon": "💌", "title": "Customised love notes", "desc": "We include your personal message." },
+      { "icon": "🕯️", "title": "LED candles (safe!)", "desc": "No fire hazard, just romance." },
+      { "icon": "🎶", "title": "Soft music recommendations", "desc": "We suggest the perfect playlist." }
+    ],
+    "gallery": [
+      "/static/images/celebrations/romantic-gallery1.jpg",
+      "/static/images/celebrations/romantic-gallery2.jpg",
+      "/static/images/celebrations/romantic-gallery3.jpg"
+    ],
+    "testimonials": [
+      { "name": "Deepak & Ria", "review": "I proposed to my girlfriend with their setup – she said yes! It was perfect.", "rating": 5 }
+    ],
+    "faqs": [
+      { "q": "Can I add a custom message?", "a": "Yes, we include a personalised message board with your special words." },
+      { "q": "Do you offer same‑day setup?", "a": "We recommend booking 2‑3 days in advance, but we can try for last‑minute requests." }
+    ],
+    "cta": {
+      "title": "Planning a Romantic Surprise?",
+      "subtitle": "Tell us your vision and we’ll create a magical moment you’ll both remember.",
+      "button_text": "Get a Custom Quote",
+      "button_link": "/contact"
+    }
+  },
+
+  "proposal": {
+    "title": "Proposal",
+    "hero_text": "Make the moment unforgettable with our proposal setups – from intimate to grand, we create the perfect stage for your big question.",
+    "image": "/static/images/celebrations/proposal.jpg",
+    "services": [
+      "Marry Me Backdrop",
+      "Rose Pathway",
+      "Ring Box Display",
+      "String Lighting",
+      "Photography Corner",
+      "Private Sound System"
+    ],
+    "trust_items": [
+      { "icon": "💍", "title": "Perfect Proposal", "desc": "We make your moment magical" },
+      { "icon": "🤫", "title": "Complete Secrecy", "desc": "We keep your surprise hidden" },
+      { "icon": "📸", "title": "Photo‑Ready Setup", "desc": "Capture the perfect moment" },
+      { "icon": "⏰", "title": "Timely Execution", "desc": "Everything happens on schedule" }
+    ],
+    "sub_categories": [
+      { "name": "Rooftop Proposal", "description": "Stunning rooftop setups with panoramic views and starry lighting." },
+      { "name": "Cafe Proposal", "description": "Private cafe corners with romantic decor and live music options." },
+      { "name": "Ring Ceremony Setup", "description": "Elegant stage with floral rings and a centrepiece for the ring." }
+    ],
+    "more_styles": [
+      { "name": "Beach Proposals", "desc": "Setups by the shore with shells and candles." },
+      { "name": "Garden Proposals", "desc": "Flower-filled setups in lush green spaces." },
+      { "name": "Home Surprise Proposals", "desc": "Transform your living room into a proposal wonderland." }
+    ],
+    "pricing": {
+      "starting_at": "₹8,999",
+      "includes": [
+        "Marry Me backdrop",
+        "Rose pathway",
+        "Ring box display",
+        "String lights",
+        "Photography corner"
+      ]
+    },
+    "feature_details": [
+      { "icon": "💌", "title": "Customised proposal script board", "desc": "Write your own words on a beautiful board." },
+      { "icon": "🌹", "title": "Fresh flower petals", "desc": "Scattered petals for a dreamy path." },
+      { "icon": "📷", "title": "Hidden camera friendly", "desc": "We can hide a camera to capture the moment." }
+    ],
+    "gallery": [
+      "/static/images/celebrations/proposal-gallery1.jpg",
+      "/static/images/celebrations/proposal-gallery2.jpg",
+      "/static/images/celebrations/proposal-gallery3.jpg"
+    ],
+    "testimonials": [
+      { "name": "Vikram & Anjali", "review": "The setup was breathtaking! She said yes immediately. Highly recommended!", "rating": 5 }
+    ],
+    "faqs": [
+      { "q": "Can you help with the surprise logistics?", "a": "Yes, we coordinate with you to ensure everything is hidden until the right moment." },
+      { "q": "Do you provide a photographer?", "a": "We can recommend a professional photographer to capture the proposal." }
+    ],
+    "cta": {
+      "title": "Planning a Proposal?",
+      "subtitle": "Let us help you create the perfect moment – she’ll remember it forever.",
+      "button_text": "Get a Custom Quote",
+      "button_link": "/contact"
+    }
+  },
+
+  "cafe": {
+    "title": "Cafe Celebrations",
+    "hero_text": "Transform your cafe into a celebration haven – ideal for birthdays, proposals, or any special gathering in a cosy, social setting.",
+    "image": "/static/images/celebrations/cafe.jpg",
+    "services": [
+      "Table Decorations",
+      "Balloon Installations",
+      "Photo Backdrop",
+      "Cafe‑specific Lighting",
+      "Customised Menu Cards",
+      "Social Media Photo Corner"
+    ],
+    "trust_items": [
+      { "icon": "☕", "title": "Cafe Friendly", "desc": "Decor that complements any cafe" },
+      { "icon": "⏰", "title": "Quick Setup", "desc": "No disruption to cafe operations" },
+      { "icon": "🎨", "title": "Themed Decor", "desc": "We match your cafe’s vibe" },
+      { "icon": "📸", "title": "Photo‑Ready Spots", "desc": "Insta‑worthy corners for your guests" }
+    ],
+    "sub_categories": [
+      { "name": "Cafe Birthday", "description": "Bright, fun setups perfect for birthday gatherings with friends." },
+      { "name": "Cafe Proposal", "description": "Intimate proposal setups in a cozy cafe corner." },
+      { "name": "Private Celebration", "description": "Book the whole cafe for your private celebration with exclusive decor." }
+    ],
+    "more_styles": [
+      { "name": "Bohemian Cafe Decor", "desc": "Macrame, plants, and earthy tones." },
+      { "name": "Retro Cafe Theme", "desc": "Vintage props, old‑school music and neon signs." },
+      { "name": "Minimalist Cafe Setup", "desc": "Clean lines, elegant flowers, and soft lighting." }
+    ],
+    "pricing": {
+      "starting_at": "₹7,499",
+      "includes": [
+        "Table decorations",
+        "Balloon installations",
+        "Photo backdrop",
+        "Cafe‑specific lighting",
+        "Customised menu cards"
+      ]
+    },
+    "feature_details": [
+      { "icon": "🎨", "title": "Cafe‑friendly decor", "desc": "Non‑intrusive designs that blend with the cafe." },
+      { "icon": "📸", "title": "Props for photos", "desc": "Fun props for your guests to enjoy." },
+      { "icon": "🍽️", "title": "Themed tableware", "desc": "Custom plates, napkins, and cups." }
+    ],
+    "gallery": [
+      "/static/images/celebrations/cafe-gallery1.jpg",
+      "/static/images/celebrations/cafe-gallery2.jpg",
+      "/static/images/celebrations/cafe-gallery3.jpg"
+    ],
+    "testimonials": [
+      { "name": "Nisha & Friends", "review": "We celebrated our bestie's birthday at the cafe – the decor made it so special!", "rating": 5 }
+    ],
+    "faqs": [
+      { "q": "Do you work with any cafe partner?", "a": "We can set up at any cafe of your choice – we coordinate with the management." },
+      { "q": "Can we bring our own food?", "a": "That depends on the cafe’s policy. We can help you check." }
+    ],
+    "cta": {
+      "title": "Planning a Cafe Celebration?",
+      "subtitle": "Tell us your idea and we’ll transform your favourite cafe into a celebration spot.",
+      "button_text": "Get a Custom Quote",
+      "button_link": "/contact"
+    }
+  },
+
+  "custom": {
+    "title": "Custom Decoration",
+    "hero_text": "We bring your vision to life with custom designs – from themed parties to any unique requirement, we create decor that is truly yours.",
+    "image": "/static/images/celebrations/custom.jpg",
+    "services": [
+      "Concept Discussion",
+      "Mood Board Creation",
+      "Custom Prop Making",
+      "On‑site Setup",
+      "Teardown",
+      "Material Sourcing"
+    ],
+    "trust_items": [
+      { "icon": "🎨", "title": "Endless Customisation", "desc": "We bring any idea to life" },
+      { "icon": "👩‍🎨", "title": "Direct Designer Collaboration", "desc": "Work directly with our designers" },
+      { "icon": "🌟", "title": "Premium Materials", "desc": "We use only the best" },
+      { "icon": "💰", "title": "Flexible Budget Options", "desc": "Custom solutions for every budget" }
+    ],
+    "sub_categories": [
+      { "name": "Theme Decoration", "description": "Any theme you imagine – from superhero to vintage to bohemian." },
+      { "name": "Backdrop Setup", "description": "Custom backdrops for photos, events, or product launches." },
+      { "name": "Reference‑Based", "description": "We replicate or adapt any design you share from Pinterest or magazines." }
+    ],
+    "more_styles": [
+      { "name": "Bollywood Theme", "desc": "Bright colours, glitter, and grand setups." },
+      { "name": "Vintage Garden", "desc": "Rustic decor with antique props." },
+      { "name": "Modern Minimalist", "desc": "Clean, sleek, and contemporary designs." }
+    ],
+    "pricing": {
+      "starting_at": "Custom quote",
+      "includes": [
+        "Concept discussion",
+        "Mood board",
+        "Custom prop creation",
+        "On‑site setup",
+        "Teardown"
+      ]
+    },
+    "feature_details": [
+      { "icon": "🎨", "title": "Endless customisation", "desc": "We create anything you envision." },
+      { "icon": "👩‍🎨", "title": "Direct designer collaboration", "desc": "Work one‑on‑one with our creative team." },
+      { "icon": "💎", "title": "Use of premium materials", "desc": "High‑quality props and fabrics." }
+    ],
+    "gallery": [
+      "/static/images/celebrations/custom-gallery1.jpg",
+      "/static/images/celebrations/custom-gallery2.jpg",
+      "/static/images/celebrations/custom-gallery3.jpg"
+    ],
+    "testimonials": [
+      { "name": "Rita & Family", "review": "The custom theme they created for our anniversary was exactly what we wanted!", "rating": 5 }
+    ],
+    "faqs": [
+      { "q": "How long does a custom design take?", "a": "We recommend a 2‑week lead time for fully custom designs, but we can expedite if needed." },
+      { "q": "Can I see a preview before execution?", "a": "Yes, we provide a mood board and 3D visualisation for your approval." }
+    ],
+    "cta": {
+      "title": "Planning a Custom Decoration?",
+      "subtitle": "Tell us your dream and we’ll bring it to life – no idea is too big or too small.",
+      "button_text": "Get a Custom Quote",
+      "button_link": "/contact"
+    }
+  }
+}

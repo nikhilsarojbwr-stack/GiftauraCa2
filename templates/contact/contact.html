@@ -3,8 +3,310 @@
 {% block title %}Contact Us — GiftAura{% endblock %}
 
 {% block content %}
+
+<!-- ============================================================
+     CONTACT PAGE
+     ============================================================ -->
 <section class="contact-page">
-    <h1>Get in Touch</h1>
-    <p>We'd love to hear from you. Reach out via email or phone.</p>
+    <div class="container">
+        <div class="contact-grid">
+
+            <!-- Left: Info -->
+            <div class="contact-info">
+                <h1>Get in Touch</h1>
+                <p class="contact-intro">
+                    We'd love to hear from you. Whether you have a question, feedback, or a custom request – reach out.
+                </p>
+                <div class="contact-details">
+                    <div class="detail-item">
+                        <span class="icon">✉</span>
+                        <div>
+                            <strong>Email</strong>
+                            <a href="mailto:hello@giftaura.com">hello@giftaura.com</a>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="icon">📞</span>
+                        <div>
+                            <strong>Phone</strong>
+                            <a href="tel:+919999999999">+91 99999 99999</a>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="icon">📍</span>
+                        <div>
+                            <strong>Location</strong>
+                            <span>Navi Mumbai, India</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Contact Form -->
+            <div class="contact-form-wrap">
+                <h2>Send Us a Message</h2>
+                <p class="form-sub">We'll respond within 24 hours.</p>
+
+                <form class="contact-form" id="contactForm" novalidate>
+                    <div class="form-group">
+                        <label for="contact-name">Full Name</label>
+                        <input type="text" id="contact-name" name="full_name" placeholder="Your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-email">Email Address</label>
+                        <input type="email" id="contact-email" name="email" placeholder="you@example.com" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="contact-subject">Subject</label>
+                        <input type="text" id="contact-subject" name="subject" placeholder="Brief subject">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" name="message" rows="5" placeholder="Tell us how we can help..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="contact-submit-btn">
+                        ✉ Send Message
+                    </button>
+
+                    <div class="form-micro" id="contact-form-message" aria-live="polite">
+                        We respect your privacy. Your data stays safe with us.
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
 </section>
+
+<!-- ============================================================
+     STYLES (matching your theme)
+     ============================================================ -->
+<style>
+    .contact-page {
+        padding: 60px 0;
+        background: var(--color-body-bg);
+    }
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 60px;
+        align-items: start;
+    }
+    .contact-info h1 {
+        font-family: var(--font-serif);
+        font-size: 36px;
+        margin-bottom: 12px;
+        color: var(--color-primary-dark);
+    }
+    .contact-intro {
+        color: var(--color-text-secondary);
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+    .contact-details {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .detail-item {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+    }
+    .detail-item .icon {
+        font-size: 24px;
+        width: 40px;
+        text-align: center;
+        color: var(--color-primary-gold);
+    }
+    .detail-item strong {
+        display: block;
+        font-size: 13px;
+        color: var(--color-text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .detail-item a,
+    .detail-item span {
+        color: var(--color-text-primary);
+        text-decoration: none;
+        font-size: 15px;
+    }
+    .detail-item a:hover {
+        color: var(--color-primary-gold);
+    }
+    .contact-form-wrap {
+        background: var(--color-white);
+        padding: 40px 35px;
+        border-radius: var(--radius-occasion, 16px);
+        box-shadow: var(--shadow-card);
+    }
+    .contact-form-wrap h2 {
+        font-family: var(--font-serif);
+        font-size: 28px;
+        margin-bottom: 4px;
+        color: var(--color-primary-dark);
+    }
+    .contact-form-wrap .form-sub {
+        color: var(--color-text-secondary);
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+    .contact-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+    .contact-form .full-width {
+        grid-column: span 2;
+    }
+    .contact-form .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .contact-form .form-group label {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--color-text-primary);
+    }
+    .contact-form .form-group input,
+    .contact-form .form-group textarea {
+        background: var(--color-input-bg);
+        border: 1px solid var(--color-border-light);
+        border-radius: var(--radius-form);
+        padding: 10px 14px;
+        font-size: 14px;
+        font-family: var(--font-sans);
+        color: var(--color-text-primary);
+        outline: none;
+        transition: border 0.3s;
+        width: 100%;
+        resize: vertical;
+    }
+    .contact-form .form-group input:focus,
+    .contact-form .form-group textarea:focus {
+        border-color: var(--color-primary-gold);
+    }
+    .contact-form .btn-submit {
+        grid-column: span 2;
+        background: var(--color-primary-gold);
+        color: var(--color-white);
+        border: none;
+        padding: 14px;
+        border-radius: var(--radius-btn);
+        font-size: 16px;
+        font-weight: 600;
+        font-family: var(--font-sans);
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+    }
+    .contact-form .btn-submit:hover {
+        background: var(--color-primary-gold-dark);
+        transform: translateY(-2px);
+    }
+    .contact-form .form-micro {
+        grid-column: span 2;
+        font-size: 13px;
+        color: var(--color-text-secondary);
+        text-align: center;
+        margin-top: 6px;
+    }
+    @media (max-width: 768px) {
+        .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        .contact-form {
+            grid-template-columns: 1fr;
+        }
+        .contact-form .full-width,
+        .contact-form .btn-submit,
+        .contact-form .form-micro {
+            grid-column: span 1;
+        }
+    }
+</style>
+
+<!-- ============================================================
+     JAVASCRIPT – sends data to Google Apps Script
+     ============================================================ -->
+<script>
+    (function() {
+        // ---------- CONFIG ----------
+        // Use the same Apps Script URL as the Dream Gift form
+        const APPS_SCRIPT_URL =
+            "https://script.google.com/macros/s/AKfycbztSjWWv57guQ1kMZLBdDe1FMDe5ksYIDAZGXWmG5bbJ2VVgzSUsdCWDsm7BPWixko8/exec";
+
+        // ---------- DOM REFS ----------
+        const form = document.getElementById("contactForm");
+        const nameInput = document.getElementById("contact-name");
+        const emailInput = document.getElementById("contact-email");
+        const subjectInput = document.getElementById("contact-subject");
+        const messageInput = document.getElementById("contact-message");
+        const submitBtn = document.getElementById("contact-submit-btn");
+        const messageEl = document.getElementById("contact-form-message");
+
+        // ---------- FORM SUBMIT ----------
+        form.addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = "Sending…";
+            messageEl.textContent = "Please wait…";
+            messageEl.style.color = "";
+            messageEl.style.fontWeight = "normal";
+
+            try {
+                // Validate
+                if (!nameInput.value.trim() || !emailInput.value.trim() || !messageInput.value.trim()) {
+                    throw new Error("Please fill in all required fields.");
+                }
+
+                // Build payload – note form_type: "contact"
+                const payload = {
+                    form_type: "contact",
+                    full_name: nameInput.value.trim(),
+                    email: emailInput.value.trim(),
+                    subject: subjectInput.value.trim(),
+                    message: messageInput.value.trim()
+                };
+
+                // Send to Apps Script
+                await fetch(APPS_SCRIPT_URL, {
+                    method: "POST",
+                    mode: "no-cors",   // we can't read the response, but that's okay
+                    headers: {
+                        "Content-Type": "text/plain;charset=utf-8"
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                // Show success
+                messageEl.textContent = "✓ Your message has been sent. We'll get back to you soon.";
+                messageEl.style.color = "#24734e";
+                messageEl.style.fontWeight = "500";
+
+                // Reset form
+                form.reset();
+
+            } catch (error) {
+                console.error("Contact Form Error:", error);
+                messageEl.textContent = error.message || "Something went wrong. Please try again.";
+                messageEl.style.color = "#b42318";
+                messageEl.style.fontWeight = "500";
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = "✉ Send Message";
+            }
+        });
+
+    })();
+</script>
+
 {% endblock %}

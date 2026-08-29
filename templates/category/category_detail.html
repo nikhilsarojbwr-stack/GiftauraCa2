@@ -1,0 +1,298 @@
+{% extends 'shared/base.html' %}
+{% block title %}{{ category.title }} — GiftAura{% endblock %}
+{% block content %}
+
+<!-- ===== BREADCRUMB ===== -->
+<div class="category-breadcrumb">
+    <div class="container">
+        <a href="/">Home</a><span>›</span><span>{{ category.title }}</span>
+    </div>
+</div>
+
+<!-- ===== HERO – EXACT COPY OF HOME PAGE HERO ===== -->
+<section class="hero">
+    <div class="hero-content">
+        <h1><span class="highlight">{{ category.title }}</span></h1>
+        <p>{{ category.hero_text }}</p>
+        <div class="hero-buttons">
+            <a href="#services" class="btn-primary">Explore Services <span>→</span></a>
+            <a href="#enquiry" class="btn-secondary">Get a Custom Quote</a>
+        </div>
+
+        <!-- Trust bar – same as home -->
+        <div class="trust-bar">
+            <div class="trust-item">
+                <span class="icon">₹</span>
+                <div class="text"><strong>Budget Friendly</strong><span>Options for every budget</span></div>
+            </div>
+            <div class="trust-item">
+                <span class="icon">◷</span>
+                <div class="text"><strong>On-Time Setup</strong><span>We respect your celebration</span></div>
+            </div>
+            <div class="trust-item">
+                <span class="icon">✦</span>
+                <div class="text"><strong>Creative Decorators</strong><span>Professional setup team</span></div>
+            </div>
+            <div class="trust-item">
+                <span class="icon">♡</span>
+                <div class="text"><strong>Custom Designs</strong><span>Made around your vision</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-visual">
+        <img src="{{ category.image }}" alt="{{ category.title }}">
+    </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="category-section" id="services">
+    <div class="container">
+        <div class="section-heading">
+            <span>✦ MAKE IT MEMORABLE ✦</span>
+            <h2>Our {{ category.title }} Services</h2>
+            <p>Beautiful decoration setups designed around your occasion, style and budget.</p>
+        </div>
+
+        <div class="service-grid">
+            {% for service in category.services %}
+            <a href="#enquiry" class="service-card">
+                <div class="service-image">
+                    {% if category.gallery and category.gallery[loop.index0] %}
+                    <img src="{{ category.gallery[loop.index0] }}" alt="{{ service }}">
+                    {% else %}
+                    <div class="service-placeholder">{{ category.icon }}</div>
+                    {% endif %}
+                </div>
+                <div class="service-content">
+                    <span class="service-number">{{ "%02d"|format(loop.index) }}</span>
+                    <h3>{{ service }}</h3>
+                    <p>Beautifully planned and professionally arranged for your special celebration.</p>
+                    <span class="service-link">Explore Setup →</span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ===== SUB‑CATEGORIES (optional) ===== -->
+{% if category.sub_categories %}
+<section class="category-section styles-section">
+    <div class="container">
+        <div class="section-heading">
+            <span>✦ FIND YOUR STYLE ✦</span>
+            <h2>Choose Your Perfect Setup</h2>
+            <p>From simple surprises to beautifully detailed celebrations.</p>
+        </div>
+        <div class="style-grid">
+            {% for sub in category.sub_categories %}
+            <article class="style-card">
+                <span class="style-number">{{ "%02d"|format(loop.index) }}</span>
+                <div>
+                    <h3>{{ sub.name }}</h3>
+                    <p>{{ sub.description }}</p>
+                    <a href="#enquiry">Plan This Setup →</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- ===== PRICING (optional) ===== -->
+{% if category.pricing %}
+<section class="category-section">
+    <div class="container">
+        <div class="section-heading">
+            <span>✦ SIMPLE & TRANSPARENT ✦</span>
+            <h2>Celebrations for Every Budget</h2>
+            <p>Start with a package and customize it according to your requirements.</p>
+        </div>
+        <div class="pricing-box">
+            <div class="pricing-main">
+                <span>STARTING FROM</span>
+                <strong>{{ category.pricing.starting_at }}</strong>
+                <p>Customize your setup based on your theme, venue and requirements.</p>
+                <a href="#enquiry" class="btn-primary">Get My Quote →</a>
+            </div>
+            <div class="pricing-includes">
+                <h3>What's Included</h3>
+                <ul>
+                    {% for item in category.pricing.includes %}
+                    <li><span>✓</span>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- ===== FEATURES (shared with home) ===== -->
+{% if category.features %}
+<section class="category-section light-section">
+    <div class="container">
+        <div class="section-heading">
+            <span>✦ WHY GIFTAURA ✦</span>
+            <h2>We Take Care of Every Detail</h2>
+            <p>You enjoy the celebration. We take care of the setup.</p>
+        </div>
+        <div class="features-grid">
+            {% for feature in category.features %}
+            <div class="feature-item">
+                <span class="icon">✦</span>
+                <div class="text">
+                    <div class="title">{{ feature }}</div>
+                    <div class="desc">Thoughtfully planned and professionally executed for your celebration.</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- ===== GALLERY (optional) ===== -->
+{% if category.gallery %}
+<section class="category-section gallery-section">
+    <div class="container">
+        <div class="section-heading">
+            <span>✦ OUR WORK ✦</span>
+            <h2>Real Celebrations, Real Setups</h2>
+            <p>Take inspiration from our recent {{ category.title }} decorations.</p>
+        </div>
+        <div class="gallery-grid">
+            {% for image in category.gallery %}
+            <a href="{{ image }}" class="gallery-card">
+                <img src="{{ image }}" alt="{{ category.title }} decoration" loading="lazy">
+                <div class="gallery-overlay"><span>View Setup ↗</span></div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- ===== PROCESS ===== -->
+<section class="catoery_process">
+  <div class="catoery_process-grid">
+
+    <div class="catoery_process-card">
+      <span>01</span>
+      <h3>Tell Us Your Idea</h3>
+      <p>Share your occasion, style, location and requirements.</p>
+    </div>
+
+    <div class="catoery_process-card">
+      <span>02</span>
+      <h3>Get a Custom Quote</h3>
+      <p>We’ll design a package that fits your vision and budget.</p>
+    </div>
+
+    <div class="catoery_process-card">
+      <span>03</span>
+      <h3>We Bring It to Life</h3>
+      <p>Sit back and relax while we execute everything flawlessly.</p>
+    </div>
+
+  </div>
+</section>
+<!-- ===== TESTIMONIALS (optional) ===== -->
+{% if category.testimonials %}
+<section class="category-section">
+    <div class="container">
+        <div class="section-heading">
+            <span>✦ CLIENT LOVE ✦</span>
+            <h2>What Our Clients Say</h2>
+            <p>Real experiences from GiftAura customers.</p>
+        </div>
+        <div class="review-grid">
+            {% for testimonial in category.testimonials %}
+            <article class="review-card">
+                <div class="stars">{% for i in range(testimonial.rating) %}★{% endfor %}</div>
+                <div class="quote">“</div>
+                <p>{{ testimonial.review }}</p>
+                <div class="review-user">
+                    <div class="avatar">{{ testimonial.name[0] }}</div>
+                    <div><strong>{{ testimonial.name }}</strong><small>GiftAura Customer</small></div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- ===== FAQ – EXACTLY AS YOU PROVIDED, WITH DYNAMIC DATA ===== -->
+{% if category.faqs %}
+<section class="section-faq">
+    <div class="section-header">
+        <div></div>
+        <div class="title-group">
+            <h2>Frequently Asked Questions</h2>
+            <span class="decor-line"></span>
+        </div>
+        <div></div>
+    </div>
+
+    <div class="faq-grid">
+        {% for faq in category.faqs %}
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <span class="q">{{ faq.q }}</span>
+            <span class="plus">+</span>
+            <div class="faq-answer" style="display: none;">{{ faq.a }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final-cta" id="enquiry">
+    <div class="final-overlay">
+        <div class="container">
+            <div class="final-content">
+                <span>✦ LET'S MAKE IT SPECIAL ✦</span>
+                <h2>Planning a {{ category.title }}?</h2>
+                <p>Tell us what you have in mind and we'll help you create a celebration you'll remember.</p>
+                <div class="final-buttons">
+                    <a href="/#dream-gift" class="btn-primary">Plan My Celebration →</a>
+                    <a href="/contact" class="btn-secondary">Contact Us</a>
+                </div>
+                <small>Custom decoration • Budget-friendly options • Professional setup</small>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FAQ TOGGLE SCRIPT (works with the new structure) ===== -->
+<script>
+function toggleFaq(element) {
+    const plus = element.querySelector('.plus');
+    const answer = element.querySelector('.faq-answer');
+    const isOpen = element.classList.contains('active');
+
+    // Optional: close other open FAQs (uncomment if you want only one open)
+    // document.querySelectorAll('.faq-item.active').forEach(el => {
+    //     if (el !== element) {
+    //         el.classList.remove('active');
+    //         el.querySelector('.plus').textContent = '+';
+    //         el.querySelector('.faq-answer').style.display = 'none';
+    //     }
+    // });
+
+    if (!isOpen) {
+        element.classList.add('active');
+        plus.textContent = '−';
+        answer.style.display = 'block';
+    } else {
+        element.classList.remove('active');
+        plus.textContent = '+';
+        answer.style.display = 'none';
+    }
+}
+</script>
+
+{% endblock %}
