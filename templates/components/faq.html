@@ -1,37 +1,223 @@
-<section class="section-faq">
-    <div class="section-header">
-        <div></div>
-        <div class="title-group">
-            <h2>Frequently Asked Questions</h2>
-            <span class="decor-line"></span>
-        </div>
-        <div></div>
-    </div>
+{% block content %}
+<style>
+    /* --- FAQ — medium spacing, smaller text --- */
+    .section-faq .faq-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+        max-width: 1000px !important;
+        margin: 0 auto !important;
+        padding: 0 30px !important;
+    }
 
-    <div class="faq-grid">
-        <div class="faq-item">
-            <span class="q">How long does customization take?</span>
-            <span class="plus">+</span>
+    .section-faq .faq-item {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background: #ffffff !important;
+        padding: 28px 34px !important;   /* ← medium internal space */
+        border-radius: 16px !important;
+        border: 1px solid #e2d7c4 !important;
+        box-shadow: 0 4px 20px rgba(30, 27, 19, 0.05) !important;
+        cursor: pointer !important;
+        transition: all 0.25s ease !important;
+    }
+
+    .section-faq .faq-item .q {
+        flex: 1 !important;
+        font-size: 14px !important;      /* ← 14px question */
+        font-weight: 600 !important;
+        color: #172923 !important;
+        line-height: 1.5 !important;
+        padding-right: 24px !important;
+        font-family: 'Poppins', 'Montserrat', sans-serif !important;
+        margin: 0 !important;
+    }
+
+    .section-faq .faq-item .plus {
+        font-size: 26px !important;
+        font-weight: 300 !important;
+        color: #c58b35 !important;
+        flex-shrink: 0 !important;
+        width: 30px !important;
+        text-align: right !important;
+        transition: transform 0.3s ease !important;
+    }
+
+    .section-faq .faq-item .faq-answer {
+        flex-basis: 100% !important;
+        margin-top: 18px !important;
+        padding-top: 20px !important;
+        padding-bottom: 2px !important;
+        border-top: 2px solid rgba(197, 139, 53, 0.2) !important;
+    }
+
+    .section-faq .faq-item .faq-answer p {
+        font-size: 13px !important;      /* ← 13px answer text */
+        line-height: 1.7 !important;
+        color: #626863 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-family: 'Poppins', 'Montserrat', sans-serif !important;
+    }
+
+    .section-faq .faq-item:hover {
+        border-color: #c58b35 !important;
+        box-shadow: 0 8px 28px rgba(197, 139, 53, 0.08) !important;
+    }
+
+    .section-faq .faq-item.active {
+        border-color: #c58b35 !important;
+        background: rgba(247, 243, 233, 0.5) !important;
+    }
+
+    /* --- responsive --- */
+    @media (max-width: 768px) {
+        .section-faq .faq-item {
+            padding: 22px 26px !important;
+        }
+        .section-faq .faq-item .q {
+            font-size: 13px !important;
+            padding-right: 18px !important;
+        }
+        .section-faq .faq-item .plus {
+            font-size: 24px !important;
+            width: 28px !important;
+        }
+        .section-faq .faq-item .faq-answer {
+            margin-top: 16px !important;
+            padding-top: 18px !important;
+        }
+        .section-faq .faq-item .faq-answer p {
+            font-size: 12px !important;
+            line-height: 1.6 !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .section-faq .faq-grid {
+            gap: 18px !important;
+            padding: 0 14px !important;
+        }
+        .section-faq .faq-item {
+            padding: 18px 20px !important;
+            border-radius: 14px !important;
+        }
+        .section-faq .faq-item .q {
+            font-size: 12px !important;
+            padding-right: 14px !important;
+        }
+        .section-faq .faq-item .plus {
+            font-size: 22px !important;
+            width: 24px !important;
+        }
+        .section-faq .faq-item .faq-answer {
+            margin-top: 14px !important;
+            padding-top: 16px !important;
+        }
+        .section-faq .faq-item .faq-answer p {
+            font-size: 12px !important;
+            line-height: 1.6 !important;
+        }
+    }
+</style>
+<!-- ===== FAQ SECTION ===== -->
+<section class="section-faq" style="padding: 60px 0 80px; background: var(--color-body-bg);">
+    <div class="container">
+        <div class="section-header">
+            <div></div>
+            <div class="title-group">
+                <h2>Frequently Asked Questions</h2>
+                <span class="decor-line"></span>
+            </div>
+            <div></div>
         </div>
-        <div class="faq-item">
-            <span class="q">Do you ship internationally?</span>
-            <span class="plus">+</span>
-        </div>
-        <div class="faq-item">
-            <span class="q">Can I return a custom gift?</span>
-            <span class="plus">+</span>
-        </div>
-        <div class="faq-item">
-            <span class="q">What payment methods do you accept?</span>
-            <span class="plus">+</span>
-        </div>
-        <div class="faq-item">
-            <span class="q">How do I track my order?</span>
-            <span class="plus">+</span>
-        </div>
-        <div class="faq-item">
-            <span class="q">Do you offer corporate gifting?</span>
-            <span class="plus">+</span>
+
+        <div class="faq-grid">
+            <!-- FAQ 1: Event Booking Timeline -->
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <span class="q">How far in advance should I book an event?</span>
+                <span class="plus">+</span>
+                <div class="faq-answer" style="display: none;">
+                    <p>We recommend booking at least 3–4 weeks in advance for large setups. However, for <strong>small gatherings, college events, and intimate celebrations</strong>, we offer flexible packages that can be set up in just 5–7 days. Just reach out and we'll work around your timeline!</p>
+                </div>
+            </div>
+
+            <!-- FAQ 2: Service Area -->
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <span class="q">Which areas do you serve?</span>
+                <span class="plus">+</span>
+                <div class="faq-answer" style="display: none;">
+                    <p>GiftAura is based in Navi Mumbai and proudly serves Vashi, Nerul, Belapur, Kharghar, Koparkhairane, Ghansoli, and surrounding areas. We also deliver to local colleges and hostels in these zones!</p>
+                </div>
+            </div>
+
+            <!-- FAQ 3: Refund/Cancellation Policy -->
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <span class="q">What is your cancellation and refund policy?</span>
+                <span class="plus">+</span>
+                <div class="faq-answer" style="display: none;">
+                    <p>Because every event and decoration is custom‑planned, we require a 50% advance payment to confirm your booking. Cancellations made 7+ days before the event receive a full refund. For small gatherings, we offer flexible rescheduling at no extra cost.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 4: Payment Methods -->
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <span class="q">What payment methods do you accept?</span>
+                <span class="plus">+</span>
+                <div class="faq-answer" style="display: none;">
+                    <p>We accept UPI, Google Pay, PhonePe, Paytm, credit/debit cards, and bank transfers. For college students, we also accept split payments so you and your friends can contribute easily!</p>
+                </div>
+            </div>
+
+            <!-- FAQ 5: Event Communication -->
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <span class="q">How do I stay updated about my event planning?</span>
+                <span class="plus">+</span>
+                <div class="faq-answer" style="display: none;">
+                    <p>We add you to a dedicated WhatsApp group with regular updates – from design mockups to setup timelines. For small parties, we share quick video previews so you know exactly how your space will look before we arrive.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 6: Small Gatherings / College Students (NEW) -->
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <span class="q">Do you handle small gatherings, college events, or hostel parties?</span>
+                <span class="plus">+</span>
+                <div class="faq-answer" style="display: none;">
+                    <p><strong>Absolutely!</strong> While other companies only focus on big weddings, we believe every celebration matters – big or small. Whether it's a college farewell, a hostel room surprise, a study group victory party, or a cozy dinner with 5–10 friends – we customize the decor, themes, and budget just for you. You don't need a huge event to get our personalized touch!</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
+<!-- ===== FAQ TOGGLE SCRIPT ===== -->
+<script>
+function toggleFaq(element) {
+    const plus = element.querySelector('.plus');
+    const answer = element.querySelector('.faq-answer');
+    const isOpen = element.classList.contains('active');
+
+    // Close other open FAQs (only one open at a time)
+    document.querySelectorAll('.faq-item.active').forEach(el => {
+        if (el !== element) {
+            el.classList.remove('active');
+            el.querySelector('.plus').textContent = '+';
+            el.querySelector('.faq-answer').style.display = 'none';
+        }
+    });
+
+    if (!isOpen) {
+        element.classList.add('active');
+        plus.textContent = '−';
+        answer.style.display = 'block';
+    } else {
+        element.classList.remove('active');
+        plus.textContent = '+';
+        answer.style.display = 'none';
+    }
+}
+</script>
+
+{% endblock %}

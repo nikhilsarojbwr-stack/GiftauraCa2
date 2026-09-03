@@ -2,7 +2,7 @@
   "birthday": {
     "title": "Birthday",
     "hero_text": "Happy Birthday! Make every birthday magical with our stunning settings. From intimate gatherings to grand parties, we bring your vision to life.",
-    "image": "/static/images/celebrations/birthday.jpg",
+    "image": "/static/images/celebrations/birthday.webp",
     "services": [
       "Balloon Decor",
       "Room Setup",
@@ -44,9 +44,9 @@
       { "icon": "👥", "title": "Team of creative decorators", "desc": "Experienced professionals who love what they do." }
     ],
     "gallery": [
-      "/static/images/celebrations/birthday-gallery1.jpg",
-      "/static/images/celebrations/birthday-gallery2.jpg",
-      "/static/images/celebrations/birthday-gallery3.jpg"
+      "/static/images/celebrations/birthday-gallery1.webp",
+      "/static/images/celebrations/birthday-gallery2.webp",
+      "/static/images/celebrations/birthday-gallery3.webp"
     ],
     "testimonials": [
       { "name": "Priya & Family", "review": "The birthday decor was stunning! The team arrived early and everything was perfect.", "rating": 5 }
@@ -68,7 +68,7 @@
   "anniversary": {
     "title": "Anniversary",
     "hero_text": "Celebrate your love story with our romantic decorations – from intimate dinners to grand anniversary parties.",
-    "image": "/static/images/celebrations/anniversary.jpg",
+    "image": "/static/images/celebrations/anniversary.webp",
     "services": [
       "Romantic Dinner Setup",
       "Surprise Decoration",
@@ -109,9 +109,9 @@
       { "icon": "🎵", "title": "Soft music & lighting", "desc": "Perfect ambience for romance." }
     ],
     "gallery": [
-      "/static/images/celebrations/anniversary-gallery1.jpg",
-      "/static/images/celebrations/anniversary-gallery2.jpg",
-      "/static/images/celebrations/anniversary-gallery3.jpg"
+      "/static/images/celebrations/anniversary-gallery1.webp",
+      "/static/images/celebrations/anniversary-gallery2.png",
+      "/static/images/celebrations/anniversary-gallery3.webp"
     ],
     "testimonials": [
       { "name": "Amit & Sneha", "review": "Our 10th anniversary was magical! The decor was beyond our expectations.", "rating": 5 }
@@ -131,7 +131,7 @@
   "romantic": {
     "title": "Romantic Surprises",
     "hero_text": "Surprise your loved one with a beautifully decorated setting – perfect for dates, anniversaries, or spontaneous romance.",
-    "image": "/static/images/celebrations/romantic.jpg",
+    "image": "/static/images/celebrations/romantic.webp",
     "services": [
       "Rose Petal Decor",
       "Candlelight Setup",
@@ -172,9 +172,9 @@
       { "icon": "🎶", "title": "Soft music recommendations", "desc": "We suggest the perfect playlist." }
     ],
     "gallery": [
-      "/static/images/celebrations/romantic-gallery1.jpg",
-      "/static/images/celebrations/romantic-gallery2.jpg",
-      "/static/images/celebrations/romantic-gallery3.jpg"
+      "/static/images/celebrations/romantic-gallery1.webp",
+      "/static/images/celebrations/romantic-gallery2.webp",
+      "/static/images/celebrations/romantic-gallery3.webp"
     ],
     "testimonials": [
       { "name": "Deepak & Ria", "review": "I proposed to my girlfriend with their setup – she said yes! It was perfect.", "rating": 5 }
@@ -194,7 +194,7 @@
   "proposal": {
     "title": "Proposal",
     "hero_text": "Make the moment unforgettable with our proposal setups – from intimate to grand, we create the perfect stage for your big question.",
-    "image": "/static/images/celebrations/proposal.jpg",
+    "image": "/static/images/celebrations/proposal.webp",
     "services": [
       "Marry Me Backdrop",
       "Rose Pathway",
@@ -235,9 +235,9 @@
       { "icon": "📷", "title": "Hidden camera friendly", "desc": "We can hide a camera to capture the moment." }
     ],
     "gallery": [
-      "/static/images/celebrations/proposal-gallery1.jpg",
-      "/static/images/celebrations/proposal-gallery2.jpg",
-      "/static/images/celebrations/proposal-gallery3.jpg"
+      "/static/images/celebrations/proposal-gallery1.webp",
+      "/static/images/celebrations/proposal-gallery2.webp",
+      "/static/images/celebrations/proposal-gallery3.webp"
     ],
     "testimonials": [
       { "name": "Vikram & Anjali", "review": "The setup was breathtaking! She said yes immediately. Highly recommended!", "rating": 5 }
@@ -257,7 +257,7 @@
   "cafe": {
     "title": "Cafe Celebrations",
     "hero_text": "Transform your cafe into a celebration haven – ideal for birthdays, proposals, or any special gathering in a cosy, social setting.",
-    "image": "/static/images/celebrations/cafe.jpg",
+    "image": "/static/images/celebrations/cafe.webp",
     "services": [
       "Table Decorations",
       "Balloon Installations",
@@ -298,9 +298,9 @@
       { "icon": "🍽️", "title": "Themed tableware", "desc": "Custom plates, napkins, and cups." }
     ],
     "gallery": [
-      "/static/images/celebrations/cafe-gallery1.jpg",
-      "/static/images/celebrations/cafe-gallery2.jpg",
-      "/static/images/celebrations/cafe-gallery3.jpg"
+      "/static/images/celebrations/cafe-gallery1.webp",
+      "/static/images/celebrations/cafe-gallery2.webp",
+      "/static/images/celebrations/cafe-gallery3.webp"
     ],
     "testimonials": [
       { "name": "Nisha & Friends", "review": "We celebrated our bestie's birthday at the cafe – the decor made it so special!", "rating": 5 }
@@ -320,7 +320,7 @@
   "custom": {
     "title": "Custom Decoration",
     "hero_text": "We bring your vision to life with custom designs – from themed parties to any unique requirement, we create decor that is truly yours.",
-    "image": "/static/images/celebrations/custom.jpg",
+    "image": "/static/images/celebrations/custom.webp",
     "services": [
       "Concept Discussion",
       "Mood Board Creation",
@@ -361,9 +361,9 @@
       { "icon": "💎", "title": "Use of premium materials", "desc": "High‑quality props and fabrics." }
     ],
     "gallery": [
-      "/static/images/celebrations/custom-gallery1.jpg",
-      "/static/images/celebrations/custom-gallery2.jpg",
-      "/static/images/celebrations/custom-gallery3.jpg"
+      "/static/images/celebrations/custom-gallery1.webp",
+      "/static/images/celebrations/custom-gallery2.webp",
+      "/static/images/celebrations/custom-gallery3.webp"
     ],
     "testimonials": [
       { "name": "Rita & Family", "review": "The custom theme they created for our anniversary was exactly what we wanted!", "rating": 5 }

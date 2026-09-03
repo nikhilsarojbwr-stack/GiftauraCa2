@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet" />
 
     <!-- Main Styles -->
-   
+    <link rel="stylesheet" href="/static/css/about.css">
     <link rel="stylesheet" href="/static/css/style.css" />
     {% block extra_head %}{% endblock %}
     <!-- or use a relative path: /static/css/style.css -->
@@ -38,7 +38,28 @@
 </head>
 
 </head>
-<body>
+<body
+    style="
+        --img-home-hero-banner: url('/static/images/home-hero-banner.webp');
+        --img-hero-event-scene: url('/static/images/hero-event-scene.webp');
+        --img-branch-left: url('/static/images/branch-left.webp');
+        --img-cta-event-family: url('/static/images/cta-event-family.webp');
+        --img-banner: url('/static/images/cta-event-family.webp');
+        --img-vidhi: url('/static/images/vidhi.webp');
+        --img-nikhil: url('/static/images/nikhil.webp');
+        --img-timeline-01: url('/static/images/timeline-01.webp');
+        --img-timeline-02: url('/static/images/timeline-02.webp');
+        --img-timeline-03: url('/static/images/timeline-03.webp');
+        --img-timeline-04: url('/static/images/timeline-04.webp');
+        --img-timeline-05: url('/static/images/timeline-05.webp');
+        --img-celebration-birthday: url('/static/images/celebrations/birthday.png');
+        --img-celebration-anniversary: url('/static/images/celebrations/anniversary.webp');
+        --img-celebration-romantic: url('/static/images/celebrations/romantic.webp');
+        --img-celebration-proposal: url('/static/images/celebrations/proposal.webp');
+        --img-celebration-cafe: url('/static/images/celebrations/cafe.webp');
+        --img-celebration-custom: url('/static/images/celebrations/custom.webp');
+    "
+>
 
     <!-- ===== NAVBAR ===== -->
     {% include 'shared/navbar.html' %}
